@@ -2,5 +2,9 @@
 # APCS2 Final Project
 THIS DOCUMENT IS REQUIRED
 ## Group Info
+ANG Studios
+Collin Liang & Yinwei Zhang
+Mr. K Period 3
 ## Overview
+Simple Cuphead Game, a shooter/platformer-esque game. Project will revolve around projectile motion (particle shooting, accelerations, parrying, gravity, bounces). Boss will have simple motion and attack patterns, particles will follow basic physics, sprites will not be affected by external forces. 
 ## Instructions

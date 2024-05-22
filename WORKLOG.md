@@ -1,6 +1,6 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Collin Liang
 
 ### date x
 
@@ -11,7 +11,7 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Yinwei Zhang
 
 ### date x
 
