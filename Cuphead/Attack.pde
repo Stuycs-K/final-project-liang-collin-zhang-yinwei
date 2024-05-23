@@ -1,4 +1,4 @@
-public class Attack {
+abstract class Attack {
   int x;
   int y;
   int size;
@@ -33,4 +33,6 @@ public class Attack {
   void deactivate () {
     active = false;
   }
+  
+  abstract void enact();
 }
