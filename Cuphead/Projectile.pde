@@ -24,13 +24,15 @@ public class Projectile extends Attack {
   }
   
   void applyForce (PVector force) {
-    if (mass > 0) {
+    if (mass > 0.0) {
      velocity.add(force.div(mass));
     }
   }
   
   void enact() {
     this.applyForce(gravity);
-    this.move(x + velocity.x, y + velocity.y);
+    this.move((int)(x + velocity.x), (int)(y + velocity.y));
+    fill(0);
+    circle(x, y, size * 10);
   }
 }
