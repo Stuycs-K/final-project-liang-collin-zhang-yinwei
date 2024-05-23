@@ -2,9 +2,11 @@
 
 ## Collin Liang
 
-### date x
+### 05/22/24
+Implemented abstract Attack class, made files, and handled run technicalities.
 
-info
+### 05/23/24
+Implemented some code for Beam and most of the code for Projectile. Ran test to make sure code for Projectile forces and velocity and displacement works.
 
 ### date y
 
