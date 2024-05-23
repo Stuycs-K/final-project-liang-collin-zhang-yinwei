@@ -1,5 +1,5 @@
 public class Projectile extends Attack {
-  int mass;
+  float mass;
   PVector velocity;
   
   public Projectile() {
@@ -8,7 +8,7 @@ public class Projectile extends Attack {
     velocity = new PVector(0, 0);
   }
   
-  public Projectile (int xCoor, int yCoor, int Size, int Mass, int xVe, int yVe) {
+  public Projectile (int xCoor, int yCoor, int Size, float Mass, int xVe, int yVe) {
     super(xCoor, yCoor, Size);
     mass = Mass;
     velocity = new PVector(xVe, yVe);
@@ -20,6 +20,12 @@ public class Projectile extends Attack {
   
   void shiftVelocity (int deltaX, int deltaY) {
     velocity.add(deltaX, deltaY);
+  }
+  
+  void applyForce (PVector force) {
+    if (mass > 0) {
+     velocity.add(force.div(mass));
+    }
   }
   
   void enact() {
