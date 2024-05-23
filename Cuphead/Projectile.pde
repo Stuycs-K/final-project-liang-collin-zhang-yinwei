@@ -1,6 +1,7 @@
 public class Projectile extends Attack {
   float mass;
   PVector velocity;
+  PVector gravity = new PVector(0, 10);
   
   public Projectile() {
     super();
@@ -29,6 +30,7 @@ public class Projectile extends Attack {
   }
   
   void enact() {
-    
+    this.applyForce(gravity);
+    this.move(x + velocity.x, y + velocity.y);
   }
 }
