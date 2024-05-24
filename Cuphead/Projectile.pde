@@ -20,17 +20,19 @@ public class Projectile extends Attack {
   }
   
   void shiftVelocity (int deltaX, int deltaY) {
-    velocity.add(deltaX, deltaY);
+    velocity.add(new PVector(deltaX, deltaY));
   }
   
   void applyForce (PVector force) {
     if (mass > 0) {
-     velocity.add(force.div(mass));
+     PVector forceNew = force.copy();
+     forceNew.div(mass);
+     velocity.add(forceNew);
     }
   }
   
   void enact() {
     this.applyForce(gravity);
-    this.move(x + velocity.x, y + velocity.y);
+    this.move((int)(x + velocity.x), (int)(y + velocity.y));
   }
 }
