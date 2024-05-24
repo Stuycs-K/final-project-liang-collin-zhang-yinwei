@@ -1,18 +1,20 @@
 public class Projectile extends Attack {
   float mass;
   PVector velocity;
-  PVector gravity = new PVector(0, 10);
+  PVector gravity;
   
   public Projectile() {
     super();
     mass = 1;
     velocity = new PVector(0, 0);
+    gravity = new PVector(0, mass);
   }
   
   public Projectile (int xCoor, int yCoor, int Size, float Mass, int xVe, int yVe) {
     super(xCoor, yCoor, Size);
     mass = Mass;
     velocity = new PVector(xVe, yVe);
+    gravity = new PVector(0, mass);
   }
   
   void setVelocity(int xVe, int yVe) {
@@ -24,11 +26,13 @@ public class Projectile extends Attack {
   }
   
   void applyForce (PVector force) {
-    if (mass > 0) {
      PVector forceNew = force.copy();
-     forceNew.div(mass);
+     float diver = mass;
+     if (diver == 0) {
+       diver = 0.2;
+     }
+     forceNew.div(diver);
      velocity.add(forceNew);
-    }
   }
   
   void enact() {
