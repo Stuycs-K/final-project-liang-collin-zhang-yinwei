@@ -37,6 +37,7 @@ public class Projectile extends Attack {
   }
   
   void applyForce (PVector force) {
+<<<<<<< HEAD
      PVector forceNew = force.copy();
      float diver = mass;
      if (diver == 0) {
@@ -51,14 +52,24 @@ public class Projectile extends Attack {
       velocity.y = abs(velocity.y);
     if (y > height-size)
       velocity.y=-1*abs(velocity.y);
+=======
+    if (mass > 0.0) {
+     velocity.add(force.div(mass));
+    }
+>>>>>>> Attack-superclass-dev
   }
   
   void enact() {
     this.applyForce(gravity);
     this.move((int)(x + velocity.x), (int)(y + velocity.y));
+<<<<<<< HEAD
     if(bounce) {
       this.bounce();
     }
     ellipse(x, y, size, size);
+=======
+    fill(0);
+    circle(x, y, size * 10);
+>>>>>>> Attack-superclass-dev
   }
 }
