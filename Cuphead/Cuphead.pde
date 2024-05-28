@@ -1,5 +1,6 @@
 Projectile test;
 SuperCharge superCharge;
+
 void setup() {
   keyboardInput = new KeyboardBuffer();
   size(1500, 500); //just for now
@@ -24,31 +25,29 @@ void draw() {
   }
 }
 
-class superCharge {
+class SuperCharge {
 	int points;
 	int pps; //Points per second used for future charm options
 
 	SuperCharge() {
 		points = 0;
-		pps = 5;
+		pps = 1;
 	}
 
 	void update() {
-		points += pps / frameRate;
-		if (points >= 250) points = 250;
+    if (Math.random() < 0.1) points += pps;
+	  if (points >= 10000) points = 10000;
 	}
 
 	void showBar() {
 		for (int i = 0; i < 5; i++) {
-      int cp = min(points - (i * 50), 50); //50 ppb
+      int cp = min(points - (i * 5), 5);
       if (cp > 0) {
-        int fillH = (int) map(cp, 0, 50, 0, 50); //remap point proportional to height
-        fill(0, 0, 100);
-        rect(i * (width / 5), height - 50, width / 5, -fillH);
+        int fillH = (int) map(cp, 0, 5, 0, 50); //remap point proportional to height
+        fill(100, 100, 100);
+        rect(i * ((width - 1350) / 5) + 5, height - 5, ((width - 1350) / 5) + 5 , -fillH);
       }
       noFill();
-      rect(i * (width / 5), height - 50, width / 5, -50);
     }
   }
-	}
 }
