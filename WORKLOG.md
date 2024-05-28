@@ -18,13 +18,14 @@ info
 
 ## Yinwei Zhang
 
+### 05/22/24
+Created background sprites without inking.
+
 ### 05/24/24
-Implemented keyboard functions and helped tune gravity and forces for projectile. 
+Implemented keyboard functions, keypad display, and helped tune gravity and forces for projectile.
 
-### date x
+### 05/25/24
+Created prototypes for the sprites for the robot character.
 
-info
-
-### date y
-
-info
+# 05/28/24
+Created the super charge bar mechanisms (implemented auto filling for now)
