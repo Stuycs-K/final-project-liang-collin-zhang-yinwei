@@ -12,5 +12,5 @@ void draw() {
 }
 
 void showProjectile(Projectile p) {
-  ellipse(p.x, p.y, p.size, p.size);
+  ellipse(p.position.x, p.position.y, p.size, p.size);
 }
