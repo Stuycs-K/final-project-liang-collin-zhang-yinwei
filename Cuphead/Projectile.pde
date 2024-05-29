@@ -47,9 +47,9 @@ public class Projectile extends Attack {
   }
   
   public void bounce() {
-    if (y < size)
+    if (position.y < size)
       velocity.y = abs(velocity.y);
-    if (y > height-size)
+    if (position.y > height-size)
       velocity.y=-1*abs(velocity.y);
     if (mass > 0.0) {
      //velocity.add(force.div(mass));
@@ -57,13 +57,13 @@ public class Projectile extends Attack {
   }
   
   void enact() {
-    this.applyForce(gravity);
-    this.move((int)(x + velocity.x), (int)(y + velocity.y));
-    if(bounce) {
-      this.bounce();
+    if (active) {
+      this.applyForce(gravity);
+      this.move((int)(position.x + velocity.x), (int)(position.y + velocity.y));
+      if(bounce) {
+        this.bounce();
+      }
+      ellipse(position.x, position.y, size, size);
     }
-    ellipse(x, y, size, size);
-    fill(0);
-    circle(x, y, size * 10);
   }
 }
