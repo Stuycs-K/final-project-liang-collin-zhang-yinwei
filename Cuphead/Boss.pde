@@ -5,10 +5,21 @@ public class Boss extends Sprite {
     size = 0;
     attackList = new ArrayList<Attack>();
     active = true;
-    limit = 0; 
+    limit = 300; 
   }
   
   
   
-  void enact(ArrayList<Attack> allAttacks) {}
+  void enact(ArrayList<Attack> allAttacks) {
+    for (Attack atk : allAttacks) {
+      if (atk.position.x > width - limit) {
+        if (! attackList.contains(atk)) {
+          health--;
+          atk.deactivate();
+          atk.parent.attackList.remove(atk);
+          allAttacks.remove(atk);
+        }
+      }
+    }
+  }
 }
