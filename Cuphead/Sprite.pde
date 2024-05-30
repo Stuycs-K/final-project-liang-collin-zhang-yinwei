@@ -6,7 +6,7 @@ abstract class Sprite {
   boolean active;
   int limit;
   
-  abstract void enact();
+  abstract void enact(ArrayList<Attack> allAttacks);
   
   void move(int xCoor, int yCoor) {
     position = new PVector (xCoor, yCoor);
@@ -18,4 +18,3 @@ abstract class Sprite {
   void deactivate () {
     active = false;
   }
-}
