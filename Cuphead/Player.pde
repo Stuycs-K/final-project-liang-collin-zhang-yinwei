@@ -9,7 +9,7 @@ public class Player extends Sprite {
     limit = 10;
   }
   
-  void enact () {
+  void enact(ArrayList<Attack> allAttacks) {
     if (keyboardInput.P1_LEFT) {
       move(1,1);
     }

@@ -18,3 +18,4 @@ abstract class Sprite {
   void deactivate () {
     active = false;
   }
+}

@@ -1,7 +1,9 @@
 Projectile test;
 SuperCharge superCharge;
+Player p1;
 
 void setup() {
+  p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1500, 500); //just for now
   test = new Projectile (750, 0, 5, 1.5, 0, 0);
