@@ -6,6 +6,7 @@ public class Player extends Sprite {
     if (keyboardInput.P1_RIGHT) {
        move(1,1);
     }
+    ellipse(position.x, position.y, size, size);
   }
   
   @Override
