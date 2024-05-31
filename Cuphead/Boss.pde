@@ -61,7 +61,5 @@ public class Boss extends Sprite {
   void showBoss() {
     image(body, position.x, position.y - 175, body.width / 3.5, body.height / 3.5);
     image(head, position.x, position.y - 375, head.width / 5, head.height / 5);
-    fill(0);
-    rect(width - limit, 0, limit, height);
   }
 }
