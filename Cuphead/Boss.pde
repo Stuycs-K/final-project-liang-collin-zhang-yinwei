@@ -47,7 +47,13 @@ public class Boss extends Sprite {
     }
     
     for (Attack atk : attackList) {
-      atk.enact();
+      if (atk.active == false) {
+        atk.parent.attackList.remove(atk);
+        allAttacks.remove(atk);
+      }
+      else {
+        atk.enact();
+      }
     }
     showBoss();
   }
