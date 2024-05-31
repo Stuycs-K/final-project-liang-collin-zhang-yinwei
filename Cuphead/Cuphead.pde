@@ -1,16 +1,20 @@
-Projectile test;
+Boss boss;
 SuperCharge superCharge;
+ArrayList allAttacks;
 
 void setup() {
   keyboardInput = new KeyboardBuffer();
   size(1500, 500); //just for now
-  test = new Projectile (750, 0, 5, 1.5, 0, 0);
 	superCharge = new SuperCharge();
+  allAttacks = new ArrayList<Attack>();
+  Projectile holder = new Projectile(0, 0, 10, 3, 7, 0, true);
+  allAttacks.add(holder);
+  boss = new Boss();
 }
 
 void draw() {
   background(255);
-  test.enact();
+  boss.enact(allAttacks);
 	superCharge.update();
 	superCharge.showBar();
 

@@ -8,7 +8,9 @@ public class Boss extends Sprite {
     limit = 300; 
   }
   
-  
+  void attack() {
+    
+  }
   
   void enact(ArrayList<Attack> allAttacks) {
     for (Attack atk : allAttacks) {
@@ -21,5 +23,11 @@ public class Boss extends Sprite {
         }
       }
     }
+    attack();
+    for (Attack atk : attackList) {
+      atk.enact();
+    }
+    fill(0);
+    rect(width - limit, 0, limit, height);
   }
 }
