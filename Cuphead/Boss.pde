@@ -1,19 +1,28 @@
+import java.util.Random;
+
 public class Boss extends Sprite {
   PImage body;
   PImage head;
+  int time;
+  Random rng;
   
   public Boss () {
-    position = new PVector(850, 450);
+    position = new PVector(1100, 450);
     health = 10;
     size = 0;
     attackList = new ArrayList<Attack>();
     active = true;
-    limit = 300; 
+    limit = 0; 
     loadBossSprite();
+    time = millis();
+    rng = new Random();
   }
   
   void attack() {
-    
+    float vx = rng.nextFloat() * 50 + 10;
+    float vy = rng.nextFloat() * 2;
+    Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 50, 5, -(int)vx, (int)vy);
+    attackList.add(ball);
   }
   
   void loadBossSprite() {
@@ -32,7 +41,11 @@ public class Boss extends Sprite {
         }
       }
     }
-    attack();
+    if (millis() - time > 1000) {
+      attack();
+      time = millis();
+    }
+    
     for (Attack atk : attackList) {
       atk.enact();
     }
