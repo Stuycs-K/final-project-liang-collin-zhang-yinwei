@@ -2,6 +2,9 @@ Boss boss;
 SuperCharge superCharge;
 ArrayList allAttacks;
 PImage bg;
+PImage goImg;
+PImage turnImg;
+PImage aimImg;
 
 void setup() {
   bg = loadImage("bg.png");
