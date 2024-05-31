@@ -1,11 +1,13 @@
 Boss boss;
 SuperCharge superCharge;
 ArrayList allAttacks;
+PImage bg;
 
 void setup() {
+  bg = loadImage("bg.png");
   keyboardInput = new KeyboardBuffer();
-  size(1500, 700);
-	superCharge = new SuperCharge();
+  size(1536, 700);
+  superCharge = new SuperCharge();
   allAttacks = new ArrayList<Attack>();
   Projectile holder = new Projectile(0, 0, 10, 3, 7, 0, true);
   allAttacks.add(holder);
@@ -13,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(bg);
   boss.enact(allAttacks);
 	superCharge.update();
 	superCharge.showBar();
