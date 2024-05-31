@@ -1,4 +1,5 @@
 public class Player extends Sprite {
+  PImage planeNormal;
   
   public Player() {
     position = new PVector(width/2,height/2);
@@ -7,6 +8,7 @@ public class Player extends Sprite {
     active = true;
     size = 15;
     limit = 10;
+    loadPlayerSprite();
   }
   
   void enact(ArrayList<Attack> allAttacks) {
@@ -17,8 +19,13 @@ public class Player extends Sprite {
        move(1,1);
     }
     ellipse(position.x, position.y, size, size);
+    showPlayer();
   }
-  
+
+  void loadPlayerSprite() {
+      planeNormal = loadImage("plane.png");
+  }
+
   @Override
   void move(int xCoor, int yCoor) {
     if (!(position.x < limit * -1 || position.y < limit * -1 || position.x > width + limit || position.y > height + limit)) {
@@ -29,5 +36,8 @@ public class Player extends Sprite {
   void parry() {
     //
   }
-  
+
+  void showPlayer() {
+      image(planeNormal, position.x, position.y);
+  }
 }
