@@ -14,6 +14,9 @@ Moved Beam to later developmental stage. Implemented basic enact (tick function)
 ### 05/28/24
 Figured out logic for hitboxes for both sprites and projectiles
 
+### 05/29/24
+Implemented Boss and Sprite Classes, implemented Boss into tester
+
 
 ## Yinwei Zhang
 
@@ -26,5 +29,11 @@ Implemented keyboard functions, keypad display, and helped tune gravity and forc
 ### 05/25/24
 Created prototypes for the sprites for the robot character.
 
+### 05/27/24
+Added keyboard icons and fixed simultaneous pressing
+
 ### 05/28/24
 Created the super charge bar mechanisms (implemented auto filling for now)
+
+### 05/29/24
+Implemented graphics and worked on player class
