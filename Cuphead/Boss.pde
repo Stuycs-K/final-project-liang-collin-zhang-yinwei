@@ -18,9 +18,9 @@ public class Boss extends Sprite {
   }
   
   Projectile attack() {
-    float vx = rng.nextFloat() * 25 + 10;
+    float vx = rng.nextFloat() * 20 + 5;
     float vy = rng.nextFloat() * 2;
-    Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 50, 0, -(int)vx, (int)vy);
+    Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 60, 0, -(int)vx, (int)vy);
     attackList.add(ball);
     return ball;
   }
@@ -49,7 +49,9 @@ public class Boss extends Sprite {
   }
   
   void showBoss() {
-    fill(0);
-    rect(width - limit, 0, limit, height);
+    fill(125);
+    circle(width - limit / 2, 120, (int)(limit * .75));
+    rect(width - limit, 235, limit, height);
+    //rect(
   }
 }

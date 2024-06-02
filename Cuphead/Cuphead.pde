@@ -9,7 +9,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(152, 245, 249);
   boss.enact(allAttacks);
 
   if (keyboardInput.P1_LEFT) {
@@ -21,4 +21,11 @@ void draw() {
   if (keyboardInput.P1_SPACE) {
     rect(20, 20, 10, 10);
   }
+}
+
+void cloud(int x, int y) {
+  stroke(255);
+  fill(255);
+  
+  stroke(0);
 }
