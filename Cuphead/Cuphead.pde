@@ -16,6 +16,8 @@ void draw() {
 	superCharge.update();
 	superCharge.showBar();
 
+  p1.enact(null);
+
   if (keyboardInput.P1_LEFT) {
     rect(10, 10, 10, 10);
   }
