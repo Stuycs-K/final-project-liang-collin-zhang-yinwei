@@ -1,5 +1,11 @@
+import java.util.Random;
 Boss boss;
 ArrayList<Attack> allAttacks;
+Random random = new Random();
+int cloud1y = (int)(random.nextFloat() * 170 + 70);
+int cloud2y = (int)(random.nextFloat() * 170 + 70);
+int cloud1x = 1700;
+int cloud2x = 2000;
 
 void setup() {
   keyboardInput = new KeyboardBuffer();
@@ -9,9 +15,19 @@ void setup() {
 }
 
 void draw() {
+  cloud1x -= 6;
+  cloud2x -= 6;
+  if (cloud1x <= -400) {
+    cloud1x = 1700;
+    cloud1y = (int)(random.nextFloat() * 170 + 70);
+  }
+  if (cloud2x <= -500) {
+    cloud2x = 2000;
+    cloud2y = (int)(random.nextFloat() * 170 + 70);
+  }
   background(152, 245, 249);
-  cloud1(750, 200);
-  cloud2(500, 200);
+  cloud1(cloud1x, cloud1y);
+  cloud2(cloud2x, cloud2y);
   boss.enact(allAttacks);
 
   if (keyboardInput.P1_LEFT) {
