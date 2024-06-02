@@ -1,24 +1,16 @@
 Boss boss;
-SuperCharge superCharge;
-ArrayList allAttacks;
-PImage bg;
+ArrayList<Attack> allAttacks;
 
 void setup() {
-  bg = loadImage("bg.png");
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
-  superCharge = new SuperCharge();
   allAttacks = new ArrayList<Attack>();
-  Projectile holder = new Projectile(0, 0, 10, 3, 7, 0, true);
-  allAttacks.add(holder);
   boss = new Boss();
 }
 
 void draw() {
-  background(bg);
+  background(255);
   boss.enact(allAttacks);
-	superCharge.update();
-	superCharge.showBar();
 
   if (keyboardInput.P1_LEFT) {
     rect(10, 10, 10, 10);
