@@ -1,5 +1,4 @@
 Boss boss;
-SuperCharge superCharge;
 ArrayList<Attack> allAttacks;
 PImage bg;
 PImage goImg;
@@ -12,7 +11,6 @@ void setup() {
   p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
-  superCharge = new SuperCharge();
   allAttacks = new ArrayList<Attack>();
   boss = new Boss();
 
@@ -24,17 +22,15 @@ void setup() {
 void draw() {
   background(bg);
   boss.enact(allAttacks);
-  superCharge.update();
-  superCharge.showBar();
   p1.enact(allAttacks);
 
   if (keyboardInput.P1_LEFT) {
-    image(goImg, 10, 10, 50, 50);
+    image(goImg, 30, 40, 50, 50);
   }
   if (keyboardInput.P1_RIGHT) {
-    image(turnImg, 70, 10, 50, 50);
+    image(turnImg, 90, 40, 50, 50);
   }
   if (keyboardInput.P1_SPACE) {
-    image(aimImg, 40, 60, 50, 50);
+    image(aimImg, 150, 40, 50, 50);
   }
 }

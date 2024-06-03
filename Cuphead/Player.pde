@@ -6,6 +6,7 @@ public class Player extends Sprite {
   boolean active;
   int health;
   int size;
+  SuperCharge superCharge;
 
   public Player() {
     position = new PVector(width/2,height/2);
@@ -15,13 +16,16 @@ public class Player extends Sprite {
     size = 15;
     rotation = 0;
     loadPlayerSprite();
+    superCharge = new SuperCharge();
   }
 
   void enact(ArrayList<Attack> allAttacks) {
     keyboardUpdate();
     movePlayer();
     displayPlayer();
-    handleCollisions();
+    handleCollisions(allAttacks);
+    superCharge.update();
+    superCharge.showBar();
   }
 
   void loadPlayerSprite() {
@@ -32,7 +36,7 @@ public class Player extends Sprite {
   @Override
   void move(int xCoor, int yCoor) {
     if (!(position.x < -size || position.y < -size || position.x > width + size || position.y > height + size)) {
-       position = new PVector (xCoor, yCoor);
+      position = new PVector(xCoor, yCoor);
     }
   }
 
@@ -47,6 +51,9 @@ public class Player extends Sprite {
     }
     if (keyboardInput.P1_RIGHT) {
       accelerate();
+    }
+    if (keyboardInput.P1_SPACE) {
+      superCharge.points -= 1;
     }
   }
 
@@ -76,11 +83,14 @@ public class Player extends Sprite {
     popMatrix();
   }
 
-  void handleCollisions() {
+  void handleCollisions(ArrayList<Attack> allAttacks) {
     for (Attack atk : allAttacks) {
       if (dist(position.x, position.y, atk.position.x, atk.position.y) < size + atk.size / 2) {
         if (atk instanceof Projectile && keyboardInput.P1_SPACE) {
+          if (superCharge.points >= 5) {
           parry((Projectile)atk);
+          }
+          superCharge.points -= 5;
         } else {
           health--;
           atk.deactivate();

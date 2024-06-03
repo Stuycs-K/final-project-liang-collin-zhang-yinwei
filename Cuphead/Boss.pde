@@ -7,7 +7,7 @@ public class Boss extends Sprite {
   Random rng;
   
   public Boss () {
-    position = new PVector(1100, 450);
+    position = new PVector(1300, 600);
     health = 10;
     size = 0;
     active = true;
@@ -19,7 +19,7 @@ public class Boss extends Sprite {
   void attack() {
     float vx = rng.nextFloat() * 50 + 10;
     float vy = rng.nextFloat() * 2;
-    Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 50, 5, -(int)vx, (int)vy);
+    Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 200, -(int)vx, (int)vy);
     Beam beam = new Beam((int)position.x + 50, (int)position.y - 150, 10, 0);
     ball.parent = this;
     beam.parent = this;
@@ -41,7 +41,7 @@ public class Boss extends Sprite {
         atk.enact();
       }
     }
-    if (millis() - time > 1000) {
+    if (millis() - time > 2000) {
       attack();
       time = millis();
     }
@@ -50,7 +50,7 @@ public class Boss extends Sprite {
   }
   
   void showBoss() {
-    image(body, position.x, position.y - 175, body.width / 3.5, body.height / 3.5);
+    image(body, position.x + 25, position.y - 155, body.width / 3.5, body.height / 3.5);
     image(head, position.x, position.y - 375, head.width / 5, head.height / 5);
   }
 }
