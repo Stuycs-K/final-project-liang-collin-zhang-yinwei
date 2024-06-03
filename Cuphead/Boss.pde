@@ -6,7 +6,7 @@ public class Boss extends Sprite {
   
   public Boss () {
     position = new PVector(1100, 450);
-    health = 10;
+    health = 20;
     size = 0;
     attackList = new ArrayList<Attack>();
     active = true;
@@ -18,7 +18,7 @@ public class Boss extends Sprite {
   Projectile attack() {
     float vx = rng.nextFloat() * 20 + 5;
     float vy = rng.nextFloat() * 2;
-    Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 60, 0, -(int)vx, (int)vy);
+    Projectile ball = new Projectile((int)position.x + 50, 300 + (int)(rng.nextFloat() * 600 - 300), 60, 0, -(int)vx, (int)vy,true);
     attackList.add(ball);
     return ball;
   }

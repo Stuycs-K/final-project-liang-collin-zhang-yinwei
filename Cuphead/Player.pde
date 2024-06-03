@@ -2,7 +2,7 @@ public class Player extends Sprite {
   boolean parrying;
   public Player() {
     position = new PVector(width/2,height/2);
-    health = 3;
+    health = 5;
     attackList = new ArrayList<Attack>();
     active = true;
     size = 15;
