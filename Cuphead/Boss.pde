@@ -1,8 +1,6 @@
 import java.util.Random;
 
 public class Boss extends Sprite {
-  PImage body;
-  PImage head;
   int time;
   Random rng;
   
