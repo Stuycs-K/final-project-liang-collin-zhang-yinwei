@@ -38,7 +38,7 @@ public class Player extends Sprite {
   }
 
   void loadPlayerSprite() {
-    planeNormal = loadImage("plane.png");
+    planeNormal = planeNormalImg;
     planeNormal.resize(50, 50);
   }
 

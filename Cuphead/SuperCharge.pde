@@ -6,7 +6,7 @@ class SuperCharge {
   SuperCharge() {
     points = 0;
     pps = 1;
-    card = loadImage("card.png");
+    card = cardImg;
   }
 
   void update() {

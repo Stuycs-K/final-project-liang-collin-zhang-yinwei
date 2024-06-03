@@ -1,22 +1,35 @@
 Boss boss;
 ArrayList<Attack> allAttacks;
 PImage bg;
-PImage goImg;
 PImage turnImg;
 PImage aimImg;
+PImage goImg;
+PImage beamImg;
+PImage fireballImg;
+PImage bodyImg;
+PImage headImg;
+PImage planeNormalImg;
+PImage cardImg;
 Player p1;
 
 void setup() {
+  bg = loadImage("bg.png");
+  goImg = loadImage("go.png");
+  turnImg = loadImage("turn.png");
+  aimImg = loadImage("aim.png");
+  beamImg = loadImage("beam.png");
+  fireballImg = loadImage("fireball.png");
+  bodyImg = loadImage("body.png");
+  headImg = loadImage("head.png");
+  planeNormalImg = loadImage("plane.png");
+  cardImg = loadImage("card.png");
+  
   bg = loadImage("bg.png");
   p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
   allAttacks = new ArrayList<Attack>();
   boss = new Boss();
-
-  goImg = loadImage("go.png");
-  turnImg = loadImage("turn.png");
-  aimImg = loadImage("aim.png");
 }
 
 void draw() {

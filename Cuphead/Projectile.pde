@@ -11,7 +11,7 @@ public class Projectile extends Attack {
     velocity = new PVector(0, 0);
     gravity = new PVector(0, mass);
     bounce = false;
-    fireballImage = loadImage("fireball.png");
+    fireballImage = fireballImg;
   }
   
   public Projectile (int xCoor, int yCoor, int Size, float Mass, int xVe, int yVe) {
@@ -19,7 +19,7 @@ public class Projectile extends Attack {
     mass = Mass;
     velocity = new PVector(xVe, yVe);
     gravity = new PVector(0, mass);
-    fireballImage = loadImage("fireball.png");
+    fireballImage = fireballImg;
   }
   
   public Projectile (int xCoor, int yCoor, int Size, float Mass, int xVe, int yVe, boolean bounce) {
@@ -28,7 +28,7 @@ public class Projectile extends Attack {
     velocity = new PVector(xVe, yVe);
     gravity = new PVector(0, mass);
     this.bounce = bounce;
-    fireballImage = loadImage("fireball.png");
+    fireballImage = fireballImg;
   }
 
   void setVelocity(int xVe, int yVe) {

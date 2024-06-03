@@ -33,8 +33,8 @@ public class Boss extends Sprite {
   }
 
   void loadBossSprite() {
-    body = loadImage("body.png");
-    head = loadImage("head.png");
+    body = bodyImg;
+    head = headImg;
   }
 
   void enact(ArrayList<Attack> allAttacks) {
