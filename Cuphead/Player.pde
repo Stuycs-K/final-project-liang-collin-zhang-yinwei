@@ -2,7 +2,7 @@ public class Player extends Sprite {
   boolean parrying;
   public Player() {
     position = new PVector(width/2,height/2);
-    health = 5;
+    health = 3;
     attackList = new ArrayList<Attack>();
     active = true;
     size = 15;
@@ -36,7 +36,7 @@ public class Player extends Sprite {
     }
     for (Attack atk : allAttacks) {
       if (atk.position.dist(this.position) < this.limit + atk.size) {
-        if (! attackList.contains(atk)) {
+        if ((!attackList.contains(atk)) && atk.active) {
           if(parrying) {
             atk.parent.attackList.remove(atk);
             atk.parent = this;
@@ -47,7 +47,6 @@ public class Player extends Sprite {
             health--;
             atk.deactivate();
             atk.parent.attackList.remove(atk);
-            //allAttacks.remove(atk);
           }
         }
       }
@@ -71,6 +70,17 @@ public class Player extends Sprite {
     fill(236, 227, 192);
     stroke(236, 227, 192);
     circle(position.x + 30, position.y - 30, 40);
+    stroke(249, 249, 86);
+    fill(249, 249, 86);
+    if(health >= 1) {
+      circle(position.x - 30, position.y + 15, 10);
+    }
+    if(health >= 2) {
+      circle(position.x - 19, position.y + 15, 10);
+    }
+    if (health >= 3) {
+      circle(position.x - 8, position.y + 15, 10);
+    }
     stroke(0);
     fill(33, 244, 85);
     circle(position.x + 30, position.y + 15, 10);

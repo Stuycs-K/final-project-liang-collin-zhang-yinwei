@@ -29,21 +29,36 @@ void setup() {
 }
 
 void draw() {
-  cloud1x -= 6;
-  cloud2x -= 6;
-  if (cloud1x <= -400) {
-    cloud1x = 1700;
-    cloud1y = (int)(random.nextFloat() * 170 + 70);
+  if (boss.health <= 0) {
+    background(0);
+    fill(255);
+    text("YOU WON", width / 2, height / 2);
   }
-  if (cloud2x <= -500) {
-    cloud2x = 2000;
-    cloud2y = (int)(random.nextFloat() * 170 + 70);
+  else if (player.health <= 0) {
+    background(0);
+    fill(255);
+    text("YOU LOST", width / 2, height / 2);
   }
-  background(152, 245, 249);
-  cloud1(cloud1x, cloud1y);
-  cloud2(cloud2x, cloud2y);
-  boss.enact(allAttacks);
-  player.enact(allAttacks);
+  else {
+    cloud1x -= 6;
+    cloud2x -= 6;
+    if (cloud1x <= -400) {
+      cloud1x = 1700;
+      cloud1y = (int)(random.nextFloat() * 170 + 70);
+    }
+    if (cloud2x <= -500) {
+      cloud2x = 2000;
+      cloud2y = (int)(random.nextFloat() * 170 + 70);
+    }
+    background(152, 245, 249);
+    cloud1(cloud1x, cloud1y);
+    cloud2(cloud2x, cloud2y);
+    boss.enact(allAttacks);
+    player.enact(allAttacks);
+    fill(255);
+    textSize(50);
+    text("BOSS: " + boss.health + "HP", 1250, 650);
+  }
 }
 
 void cloud1(int x, int y) {

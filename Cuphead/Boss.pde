@@ -6,7 +6,7 @@ public class Boss extends Sprite {
   
   public Boss () {
     position = new PVector(1100, 450);
-    health = 20;
+    health = 10;
     size = 0;
     attackList = new ArrayList<Attack>();
     active = true;
@@ -27,12 +27,11 @@ public class Boss extends Sprite {
   void enact(ArrayList<Attack> allAttacks) {
     showBoss();
     for (Attack atk : allAttacks) {
-      if (atk.position.x > width - limit) {
-        if (! attackList.contains(atk)) {
+      if (atk.position.x > 1200) {
+        if ((!(atk.parent == this)) && atk.active) {
           health--;
           atk.deactivate();
           atk.parent.attackList.remove(atk);
-          allAttacks.remove(atk);
         }
       }
     }
