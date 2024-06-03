@@ -10,6 +10,7 @@ PImage bodyImg;
 PImage headImg;
 PImage planeNormalImg;
 PImage cardImg;
+PImage hpImg;
 Player p1;
 
 void setup() {
@@ -23,6 +24,7 @@ void setup() {
   headImg = loadImage("head.png");
   planeNormalImg = loadImage("plane.png");
   cardImg = loadImage("card.png");
+  hpImg = loadImage("hp.png");
   
   bg = loadImage("bg.png");
   p1 = new Player();

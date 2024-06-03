@@ -1,5 +1,6 @@
 public class Player extends Sprite {
   PImage planeNormal;
+  PImage hpDisplay;
   PVector position;
   PVector speed;
   float rotation;
@@ -39,6 +40,7 @@ public class Player extends Sprite {
 
   void loadPlayerSprite() {
     planeNormal = planeNormalImg;
+    hpDisplay = hpImg;
     planeNormal.resize(50, 50);
   }
 
@@ -64,11 +66,11 @@ public class Player extends Sprite {
     if (keyboardInput.P1_SPACE) {
       superCharge.points -= 1;
     }
-    
-    fill(125);
+    image(hpDisplay, 70, height - 110, size * 10 , size * 5);
+    fill(0);
     textSize(32);
-    textAlign(RIGHT, BOTTOM);
-    text("HP: " + health, width - 10, height - 10);
+    textAlign(LEFT, BOTTOM);
+    text(health, 90, height - 95);
   }
 
   void movePlayer() {
