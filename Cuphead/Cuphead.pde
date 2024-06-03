@@ -24,10 +24,10 @@ void draw() {
   boss.enact(allAttacks);
   p1.enact(allAttacks);
 
-  if (keyboardInput.P1_LEFT) {
+  if (keyboardInput.P1_RIGHT) {
     image(goImg, 30, 40, 50, 50);
   }
-  if (keyboardInput.P1_RIGHT) {
+  if (keyboardInput.P1_LEFT) {
     image(turnImg, 90, 40, 50, 50);
   }
   if (keyboardInput.P1_SPACE) {
