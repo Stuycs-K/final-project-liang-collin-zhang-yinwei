@@ -5,9 +5,11 @@ PImage bg;
 PImage goImg;
 PImage turnImg;
 PImage aimImg;
+Player p1;
 
 void setup() {
   bg = loadImage("bg.png");
+  p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
   superCharge = new SuperCharge();
@@ -26,6 +28,8 @@ void draw() {
   boss.enact(allAttacks);
   superCharge.update();
   superCharge.showBar();
+
+  p1.enact(null);
 
   if (keyboardInput.P1_LEFT) {
     image(goImg, 10, 10, 50, 50);
