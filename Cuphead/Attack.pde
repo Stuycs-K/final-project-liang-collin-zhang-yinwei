@@ -1,5 +1,6 @@
 abstract class Attack {
   PVector position;
+  PVector velocity;
   int size;
   boolean active;
   int limit;

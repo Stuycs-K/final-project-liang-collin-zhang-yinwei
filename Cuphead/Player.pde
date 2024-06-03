@@ -1,17 +1,18 @@
 public class Player extends Sprite {
-  
+  boolean parrying;
   public Player() {
     position = new PVector(width/2,height/2);
     health = 3;
     attackList = new ArrayList<Attack>();
     active = true;
     size = 15;
-    limit = 150;
+    limit = 40;
+    parrying = false;
   }
   
   void enact(ArrayList<Attack> allAttacks) {
     if(keyboardInput.P_SPACE) {
-      parry();
+      parrying = true;
       showAltPlayer();
     }
     else{
@@ -29,6 +30,28 @@ public class Player extends Sprite {
       }
       showPlayer();
     }
+    for (Attack atk : attackList) {
+      atk.enact();
+    }
+    for (Attack atk : allAttacks) {
+      if (atk.position.dist(this.position) < this.limit + atk.size) {
+        if (! attackList.contains(atk)) {
+          if(parrying) {
+            atk.parent.attackList.remove(atk);
+            atk.parent = this;
+            atk.velocity.x *= -1;
+            this.attackList.add(atk);
+          }
+          else{
+            health--;
+            atk.deactivate();
+            atk.parent.attackList.remove(atk);
+            //allAttacks.remove(atk);
+          }
+        }
+      }
+    }
+    parrying = false;
   }
 
 
@@ -38,9 +61,6 @@ public class Player extends Sprite {
     position.y += yCoor;
   }
   
-  void parry() {
-    //
-  }
 
   void showPlayer() {
     stroke(255, 0, 0);

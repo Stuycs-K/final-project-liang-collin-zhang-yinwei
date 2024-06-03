@@ -1,6 +1,5 @@
 public class Projectile extends Attack {
   float mass;
-  PVector velocity;
   PVector gravity;
   boolean bounce;
   
@@ -64,7 +63,7 @@ public class Projectile extends Attack {
         this.bounce();
       }
       fill(255);
-      ellipse(position.x, position.y, size, size);
+      circle(position.x, position.y, size);
     }
   }
 }
