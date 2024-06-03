@@ -23,6 +23,9 @@ Implemented Boss and Sprite Classes, implemented Boss into tester
 ### 05/22/24
 Created background sprites without inking.
 
+### 05/23/24
+Created functional game display, and head display
+
 ### 05/24/24
 Implemented keyboard functions, keypad display, and helped tune gravity and forces for projectile.
 
@@ -37,3 +40,15 @@ Created the super charge bar mechanisms (implemented auto filling for now)
 
 ### 05/29/24
 Implemented graphics and worked on player class
+
+### 05/30/24
+Boss template and shots, basic player actions and movements
+
+### 05/31/24
+Player sprites and cards
+
+### 06/02/24
+Player plane motion, testing for collisions
+
+### 06/03/24
+Completed beam attack, added additional images, and completed collision logic
