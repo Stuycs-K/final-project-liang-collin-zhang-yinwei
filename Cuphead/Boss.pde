@@ -5,7 +5,8 @@ public class Boss extends Sprite {
   PImage head;
   int time;
   Random rng;
-  
+  int hitsTaken;
+
   public Boss () {
     position = new PVector(1300, 600);
     health = 10;
@@ -14,6 +15,7 @@ public class Boss extends Sprite {
     loadBossSprite();
     time = millis();
     rng = new Random();
+    hitsTaken = 0;
   }
   
   void attack() {
@@ -41,6 +43,9 @@ public class Boss extends Sprite {
         atk.enact();
       }
     }
+
+    checkForHits(allAttacks);
+
     if (millis() - time > 2000) {
       attack();
       time = millis();
@@ -52,5 +57,25 @@ public class Boss extends Sprite {
   void showBoss() {
     image(body, position.x + 25, position.y - 155, body.width / 3.5, body.height / 3.5);
     image(head, position.x, position.y - 375, head.width / 5, head.height / 5);
+  }
+
+  void takeHit() {
+    hitsTaken++;
+    if (hitsTaken >= 3) {
+      println("Boss is done for");
+      exit();
+    }
+  }
+
+  void checkForHits(ArrayList<Attack> allAttacks) {
+    for (Attack atk : allAttacks) {
+      if (atk instanceof Projectile && atk.parent instanceof Player) {
+        if (dist(position.x, position.y - 375, atk.position.x, atk.position.y) < size + atk.size / 2 + 100) {
+          takeHit();
+          atk.deactivate();
+          allAttacks.remove(atk);
+        }
+      }
+    }
   }
 }

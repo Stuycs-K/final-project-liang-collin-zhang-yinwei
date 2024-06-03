@@ -10,7 +10,7 @@ class SuperCharge {
   }
 
   void update() {
-    if (Math.random() < 0.2) points += pps;
+    if (Math.random() < 0.3) points += pps;
     if (points >= 25) points = 25;
     if (points <= 0) points = 0;
   }

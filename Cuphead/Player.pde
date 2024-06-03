@@ -26,6 +26,7 @@ public class Player extends Sprite {
     handleCollisions(allAttacks);
     superCharge.update();
     superCharge.showBar();
+    println(health);
   }
 
   void loadPlayerSprite() {
@@ -88,12 +89,15 @@ public class Player extends Sprite {
       if (dist(position.x, position.y, atk.position.x, atk.position.y) < size + atk.size / 2) {
         if (atk instanceof Projectile && keyboardInput.P1_SPACE) {
           if (superCharge.points >= 5) {
-          parry((Projectile)atk);
+            parry((Projectile)atk);
+            superCharge.points -= 5;
+          } else {
+            atk.deactivate();
+            health--;
           }
-          superCharge.points -= 5;
         } else {
-          health--;
           atk.deactivate();
+          health--;
         }
       }
     }
