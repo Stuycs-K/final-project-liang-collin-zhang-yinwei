@@ -6,17 +6,13 @@ public class Player extends Sprite {
   boolean active;
   int health;
   int size;
-  int limit;
-  ArrayList<Attack> attackList;
 
   public Player() {
     position = new PVector(width/2,height/2);
     speed = new PVector(0, 0);
     health = 3;
-    attackList = new ArrayList<Attack>();
     active = true;
     size = 15;
-    limit = 10;
     rotation = 0;
     loadPlayerSprite();
   }
@@ -25,6 +21,7 @@ public class Player extends Sprite {
     keyboardUpdate();
     movePlayer();
     displayPlayer();
+    handleCollisions();
   }
 
   void loadPlayerSprite() {
@@ -34,13 +31,14 @@ public class Player extends Sprite {
 
   @Override
   void move(int xCoor, int yCoor) {
-    if (!(position.x < limit * -1 || position.y < limit * -1 || position.x > width + limit || position.y > height + limit)) {
+    if (!(position.x < -size || position.y < -size || position.x > width + size || position.y > height + size)) {
        position = new PVector (xCoor, yCoor);
     }
   }
-  
-  void parry() {
-    //
+
+  void parry(Projectile proj) {
+    proj.setVelocity(-(int)proj.velocity.x, -(int)proj.velocity.y);
+    proj.parent = this;
   }
 
   void keyboardUpdate() {
@@ -76,5 +74,18 @@ public class Player extends Sprite {
     imageMode(CENTER);
     image(planeNormal, 0, 0);
     popMatrix();
+  }
+
+  void handleCollisions() {
+    for (Attack atk : allAttacks) {
+      if (dist(position.x, position.y, atk.position.x, atk.position.y) < size + atk.size / 2) {
+        if (atk instanceof Projectile && keyboardInput.P1_SPACE) {
+          parry((Projectile)atk);
+        } else {
+          health--;
+          atk.deactivate();
+        }
+      }
+    }
   }
 }

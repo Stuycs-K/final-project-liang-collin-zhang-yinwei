@@ -10,9 +10,7 @@ public class Boss extends Sprite {
     position = new PVector(1100, 450);
     health = 10;
     size = 0;
-    attackList = new ArrayList<Attack>();
     active = true;
-    limit = 0; 
     loadBossSprite();
     time = millis();
     rng = new Random();
@@ -22,39 +20,32 @@ public class Boss extends Sprite {
     float vx = rng.nextFloat() * 50 + 10;
     float vy = rng.nextFloat() * 2;
     Projectile ball = new Projectile((int)position.x + 50, (int)position.y - 150, 50, 5, -(int)vx, (int)vy);
-    attackList.add(ball);
+    Beam beam = new Beam((int)position.x + 50, (int)position.y - 150, 10, 0);
+    ball.parent = this;
+    beam.parent = this;
+    allAttacks.add(ball);
+    allAttacks.add(beam);
   }
-  
+
   void loadBossSprite() {
     body = loadImage("body.png");
     head = loadImage("head.png");
   }
-  
+
   void enact(ArrayList<Attack> allAttacks) {
     for (Attack atk : allAttacks) {
-      if (atk.position.x > width - limit) {
-        if (! attackList.contains(atk)) {
-          health--;
-          atk.deactivate();
-          atk.parent.attackList.remove(atk);
-          allAttacks.remove(atk);
-        }
+      if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
+        atk.deactivate();
+        allAttacks.remove(atk);
+      } else {
+        atk.enact();
       }
     }
     if (millis() - time > 1000) {
       attack();
       time = millis();
     }
-    
-    for (Attack atk : attackList) {
-      if (atk.active == false) {
-        atk.parent.attackList.remove(atk);
-        allAttacks.remove(atk);
-      }
-      else {
-        atk.enact();
-      }
-    }
+
     showBoss();
   }
   

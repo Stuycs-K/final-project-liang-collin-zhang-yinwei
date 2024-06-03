@@ -19,7 +19,7 @@ class SuperCharge {
       tint(255, 155);
       image(card, i * ((width - 1350) / 5) + 5, height - 50, ((width - 1350) / 5) + 5, 50);
     }
-    
+
     for (int i = 0; i < 5; i++) {
       int cp = min(points - (i * 5), 5);
       if (cp > 0) {

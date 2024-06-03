@@ -1,6 +1,6 @@
 Boss boss;
 SuperCharge superCharge;
-ArrayList allAttacks;
+ArrayList<Attack> allAttacks;
 PImage bg;
 PImage goImg;
 PImage turnImg;
@@ -14,8 +14,6 @@ void setup() {
   size(1536, 700);
   superCharge = new SuperCharge();
   allAttacks = new ArrayList<Attack>();
-  Projectile holder = new Projectile(0, 0, 10, 3, 7, 0, true);
-  allAttacks.add(holder);
   boss = new Boss();
 
   goImg = loadImage("go.png");
@@ -28,8 +26,7 @@ void draw() {
   boss.enact(allAttacks);
   superCharge.update();
   superCharge.showBar();
-
-  p1.enact(null);
+  p1.enact(allAttacks);
 
   if (keyboardInput.P1_LEFT) {
     image(goImg, 10, 10, 50, 50);

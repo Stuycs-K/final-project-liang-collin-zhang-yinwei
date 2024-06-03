@@ -26,7 +26,7 @@ public class Projectile extends Attack {
     gravity = new PVector(0, mass);
     this.bounce = bounce;
   }
-  
+
   void setVelocity(int xVe, int yVe) {
     velocity = new PVector (xVe, yVe);
     bounce = false;
