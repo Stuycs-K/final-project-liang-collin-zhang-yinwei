@@ -1,13 +1,4 @@
-KeyboardBuffer keyboardInput;
-void keyPressed() {
-  //send the number of the key pressed to your KeyboardBuffer object
-  keyboardInput.press(keyCode,true);
-}
 
-void keyReleased() {
-  //send the number of the key released to your KeyboardBuffer object
-  keyboardInput.press(keyCode,false);
-}
 
 /**************KeyboardBuffer TAB************/
 class KeyboardBuffer {

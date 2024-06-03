@@ -1,17 +1,32 @@
 import java.util.Random;
 Boss boss;
+Player player;
 ArrayList<Attack> allAttacks;
+KeyboardBuffer keyboardInput;
 Random random = new Random();
 int cloud1y = (int)(random.nextFloat() * 170 + 70);
 int cloud2y = (int)(random.nextFloat() * 170 + 70);
 int cloud1x = 1700;
 int cloud2x = 2000;
 
+void keyPressed() {
+  //send the number of the key pressed to your KeyboardBuffer object
+  fill(0);
+  circle(250, 250, 1000);
+  keyboardInput.press(keyCode,true);
+}
+
+void keyReleased() {
+  //send the number of the key released to your KeyboardBuffer object
+  keyboardInput.press(keyCode,false);
+}
+
 void setup() {
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
   allAttacks = new ArrayList<Attack>();
   boss = new Boss();
+  player = new Player();
 }
 
 void draw() {
@@ -29,16 +44,7 @@ void draw() {
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
   boss.enact(allAttacks);
-
-  if (keyboardInput.P1_LEFT) {
-    rect(10, 10, 10, 10);
-  }
-  if (keyboardInput.P1_RIGHT) {
-    rect(30, 10, 10, 10);
-  }
-  if (keyboardInput.P1_SPACE) {
-    rect(20, 20, 10, 10);
-  }
+  player.enact(allAttacks);
 }
 
 void cloud1(int x, int y) {

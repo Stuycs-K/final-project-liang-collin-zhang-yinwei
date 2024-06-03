@@ -6,26 +6,30 @@ public class Player extends Sprite {
     attackList = new ArrayList<Attack>();
     active = true;
     size = 15;
-    limit = 10;
+    limit = 150;
   }
   
   void enact(ArrayList<Attack> allAttacks) {
-    if (keyboardInput.P1_LEFT) {
-      move(1,1);
+    if (keyboardInput.P_LEFT) {
+      move(-1,0);
     }
-    if (keyboardInput.P1_RIGHT) {
-       move(1,1);
+    if (keyboardInput.P_RIGHT) {
+       move(1,0);
     }
-    ellipse(position.x, position.y, size, size);
+    if(keyboardInput.P_UP) {
+      move(0, -1);
+    }
+    if(keyboardInput.P_DOWN) {
+      move(0, 1);
+    }
     showPlayer();
   }
 
 
   @Override
   void move(int xCoor, int yCoor) {
-    if (!(position.x < limit * -1 || position.y < limit * -1 || position.x > width + limit || position.y > height + limit)) {
-       position = new PVector (xCoor, yCoor);
-    }
+    position.x += xCoor;
+    position.y += yCoor;
   }
   
   void parry() {
