@@ -8,6 +8,10 @@ public class Player extends Sprite {
   int size;
   SuperCharge superCharge;
 
+  boolean immune;
+  int immuneTimer;
+  int immuneDuration;
+
   public Player() {
     position = new PVector(width/2,height/2);
     speed = new PVector(0, 0);
@@ -17,6 +21,9 @@ public class Player extends Sprite {
     rotation = 0;
     loadPlayerSprite();
     superCharge = new SuperCharge();
+    immune = false;
+    immuneTimer = 0;
+    immuneDuration = 60;
   }
 
   void enact(ArrayList<Attack> allAttacks) {
@@ -26,6 +33,7 @@ public class Player extends Sprite {
     handleCollisions(allAttacks);
     superCharge.update();
     superCharge.showBar();
+    updateImmunity();
     println(health);
   }
 
@@ -56,6 +64,11 @@ public class Player extends Sprite {
     if (keyboardInput.P1_SPACE) {
       superCharge.points -= 1;
     }
+    
+    fill(125);
+    textSize(32);
+    textAlign(RIGHT, BOTTOM);
+    text("HP: " + health, width - 10, height - 10);
   }
 
   void movePlayer() {
@@ -85,6 +98,7 @@ public class Player extends Sprite {
   }
 
   void handleCollisions(ArrayList<Attack> allAttacks) {
+    if (immune) return;
     for (int i = allAttacks.size() - 1; i >= 0; i--) {
       Attack atk = allAttacks.get(i);
       if (dist(position.x, position.y, atk.position.x, atk.position.y) < size + atk.size / 2) {
@@ -95,11 +109,35 @@ public class Player extends Sprite {
           } else {
             atk.deactivate();
             health--;
+            activateImmunity();
+            clearProjectiles(allAttacks);
           }
         } else {
           atk.deactivate();
           health--;
+          activateImmunity();
+          clearProjectiles(allAttacks);
         }
+      }
+    }
+  }
+  void activateImmunity() {
+    immune = true;
+    immuneTimer = 0;
+  }
+  void updateImmunity() {
+    if (immune) {
+      immuneTimer++;
+      if (immuneTimer > immuneDuration) {
+        immune = false;
+      }
+    }
+  }
+  void clearProjectiles(ArrayList<Attack> allAttacks) {
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
+      if (atk instanceof Projectile) {
+        atk.deactivate();
       }
     }
   }
