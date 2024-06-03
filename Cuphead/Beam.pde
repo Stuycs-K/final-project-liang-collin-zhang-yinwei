@@ -1,14 +1,17 @@
 public class Beam extends Attack{
-  int r; 
-  
+  int r;
+  PImage beamImage;
+
   public Beam () {
     super();
     r = 0;
+    beamImage = loadImage("beam.png");
   }
   
   public Beam (int xCoor, int yCoor, int Size, int r) {
     super(xCoor, yCoor, Size);
     this.r = r;
+    beamImage = loadImage("beam.png");
   }
   
   void rotate() {
@@ -26,6 +29,8 @@ public class Beam extends Attack{
   }
   
   void enact() {
-    //to be implemented
+    position.x -= 5;
+    fill(255, 0, 0);
+    image(beamImage, position.x, position.y, size * 10, size * 3);
   }
 }

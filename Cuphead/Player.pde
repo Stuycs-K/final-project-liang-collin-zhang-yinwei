@@ -85,7 +85,8 @@ public class Player extends Sprite {
   }
 
   void handleCollisions(ArrayList<Attack> allAttacks) {
-    for (Attack atk : allAttacks) {
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
       if (dist(position.x, position.y, atk.position.x, atk.position.y) < size + atk.size / 2) {
         if (atk instanceof Projectile && keyboardInput.P1_SPACE) {
           if (superCharge.points >= 5) {

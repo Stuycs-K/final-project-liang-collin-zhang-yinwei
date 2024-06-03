@@ -19,14 +19,17 @@ public class Boss extends Sprite {
   }
   
   void attack() {
-    float vx = rng.nextFloat() * 50 + 10;
-    float vy = rng.nextFloat() * 2;
-    Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 200, -(int)vx, (int)vy);
-    Beam beam = new Beam((int)position.x + 50, (int)position.y - 150, 10, 0);
-    ball.parent = this;
-    beam.parent = this;
-    allAttacks.add(ball);
-    allAttacks.add(beam);
+    if (rng.nextBoolean()) {
+      float vx = rng.nextFloat() * 50 + 10;
+      float vy = rng.nextFloat() * 2;
+      Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 200, -(int)vx, (int)vy);
+      ball.parent = this;
+      allAttacks.add(ball);
+    } else {
+      Beam beam = new Beam((int)position.x + 50, (int)position.y - 150, 10, 0);
+      beam.parent = this;
+      allAttacks.add(beam);
+    }
   }
 
   void loadBossSprite() {
@@ -35,10 +38,12 @@ public class Boss extends Sprite {
   }
 
   void enact(ArrayList<Attack> allAttacks) {
-    for (Attack atk : allAttacks) {
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
       if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
         atk.deactivate();
-        allAttacks.remove(atk);
+        atk.deactivate();
+        allAttacks.remove(i);
       } else {
         atk.enact();
       }
@@ -46,7 +51,7 @@ public class Boss extends Sprite {
 
     checkForHits(allAttacks);
 
-    if (millis() - time > 2000) {
+    if (millis() - time > 1000) {
       attack();
       time = millis();
     }
@@ -68,12 +73,13 @@ public class Boss extends Sprite {
   }
 
   void checkForHits(ArrayList<Attack> allAttacks) {
-    for (Attack atk : allAttacks) {
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
       if (atk instanceof Projectile && atk.parent instanceof Player) {
         if (dist(position.x, position.y - 375, atk.position.x, atk.position.y) < size + atk.size / 2 + 100) {
           takeHit();
           atk.deactivate();
-          allAttacks.remove(atk);
+          allAttacks.remove(i);
         }
       }
     }

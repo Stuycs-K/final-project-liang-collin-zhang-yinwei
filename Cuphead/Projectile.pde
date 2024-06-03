@@ -47,6 +47,7 @@ public class Projectile extends Attack {
        diver = 1;
      }
      forceNew.div(diver);
+     forceNew.mult(0.5);
      velocity.add(forceNew);
   }
   
