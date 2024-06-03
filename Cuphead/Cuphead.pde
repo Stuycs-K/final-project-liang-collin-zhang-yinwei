@@ -12,7 +12,6 @@ int cloud2x = 2000;
 void keyPressed() {
   //send the number of the key pressed to your KeyboardBuffer object
   fill(0);
-  circle(250, 250, 1000);
   keyboardInput.press(keyCode,true);
 }
 
