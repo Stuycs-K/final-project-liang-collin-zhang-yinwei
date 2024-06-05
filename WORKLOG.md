@@ -26,6 +26,9 @@ Figured out parry implementation logic, prepped projectile and attack for parry
 ### 06/02/24
 Implemented parry and created workable rudamentary sprites and moving background for presentable demo, worked on linear plane movement mode
 
+### 06/03/24
+Looked at actual cuphead boss structures to figure out how final background should look
+
 ### 06/04/24
 Changed main branch back to more workable linear plane motion and improved parry logic/handling
 
