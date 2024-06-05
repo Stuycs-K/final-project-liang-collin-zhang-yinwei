@@ -2,6 +2,7 @@ abstract class Attack {
   PVector position;
   int size;
   boolean active;
+  PVector velocity;
   Sprite parent;
 
   public Attack() {
@@ -9,6 +10,7 @@ abstract class Attack {
     size = 1;
     active = true;
     parent = new Boss(); //CHANGE
+    velocity = new PVector(0, 0);
   }
   
   public Attack(int xCoor, int yCoor, int Size) {
@@ -16,6 +18,7 @@ abstract class Attack {
     size = Size;
     active = true;
     parent = new Boss(); //CHANGE
+    velocity = new PVector(0, 0);
   }
 
   void move(int xCoor, int yCoor) {

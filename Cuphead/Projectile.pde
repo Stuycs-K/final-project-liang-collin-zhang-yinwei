@@ -1,6 +1,5 @@
 public class Projectile extends Attack {
   float mass;
-  PVector velocity;
   PVector gravity;
   boolean bounce;
   PImage fireballImage;

@@ -3,6 +3,7 @@ abstract class Sprite {
   int health;
   int size;
   boolean active;
+  ArrayList<Attack> attackList;
 
   abstract void enact(ArrayList<Attack> allAttacks);
 

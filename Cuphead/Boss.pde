@@ -16,6 +16,7 @@ public class Boss extends Sprite {
     time = millis();
     rng = new Random();
     hitsTaken = 0;
+    attackList = new ArrayList<Attack>();
   }
   
   void attack() {
