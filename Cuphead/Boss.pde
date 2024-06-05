@@ -21,9 +21,9 @@ public class Boss extends Sprite {
   
   void attack() {
     if (rng.nextBoolean()) {
-      float vx = rng.nextFloat() * 10 + 30;
+      float vx = rng.nextFloat() * 10 + 10;
       float vy = rng.nextFloat() * 2;
-      Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 4000, -(int)vx, (int)vy);
+      Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 400, -(int)vx, 0);
       ball.parent = this;
       allAttacks.add(ball);
     } else {
