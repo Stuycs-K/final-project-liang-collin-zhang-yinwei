@@ -32,6 +32,9 @@ Looked at actual cuphead boss structures to figure out how final background shou
 ### 06/04/24
 Changed main branch back to more workable linear plane motion and improved parry logic/handling
 
+### 06/05/24
+Balanced boss by changing speeds and trajectory of large red projectile attack
+
 
 ## Yinwei Zhang
 
