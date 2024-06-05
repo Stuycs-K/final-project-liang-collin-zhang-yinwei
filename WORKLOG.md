@@ -17,6 +17,18 @@ Figured out logic for hitboxes for both sprites and projectiles
 ### 05/29/24
 Implemented Boss and Sprite Classes, implemented Boss into tester
 
+### 05/30/24
+Worked on boss functionality, figured out final hitboxes for boss and basic attacks
+
+### 05/31/24
+Figured out parry implementation logic, prepped projectile and attack for parry
+
+### 06/02/24
+Implemented parry and created workable rudamentary sprites and moving background for presentable demo, worked on linear plane movement mode
+
+### 06/04/24
+Changed main branch back to more workable linear plane motion and improved parry logic/handling
+
 
 ## Yinwei Zhang
 
