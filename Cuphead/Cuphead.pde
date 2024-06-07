@@ -1,7 +1,6 @@
 Boss boss;
 ArrayList<Attack> allAttacks;
 KeyboardBuffer keyboardInput;
-PImage bg;
 /*PImage turnImg;
 PImage aimImg;
 PImage goImg;*/
@@ -15,7 +14,6 @@ PImage hpImg;
 Player p1;
 
 void setup() {
-  bg = loadImage("bg.png");
   /*goImg = loadImage("go.png");
   turnImg = loadImage("turn.png");
   aimImg = loadImage("aim.png");*/
@@ -27,7 +25,6 @@ void setup() {
   cardImg = loadImage("card.png");
   hpImg = loadImage("hp.png");
   
-  bg = loadImage("bg.png");
   p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
@@ -36,7 +33,6 @@ void setup() {
 }
 
 void draw() {
-  background(bg);
   boss.enact(allAttacks);
   p1.enact(allAttacks);
 
