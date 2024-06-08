@@ -46,7 +46,7 @@ void draw() {
   }
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
-  building1(0, 0);
+  building1(0, 80);
   boss.enact(allAttacks);
   p1.enact(allAttacks);
 
@@ -88,6 +88,8 @@ void building1 (int x, int yDep) {
   stroke(57, 39, 58);
   fill(82, 57, 85);
   rect(x, (height - 200) + yDep, 70, height - 200, 7);
+  triangle(x + 32, (height - 200) + yDep, x + 38, (height - 200) + yDep, x + 35, (height - 270) + yDep);
+  rect(x + 60, (height - 120) + yDep, 80, height - 120, 7);
   stroke(0);
 }
 
