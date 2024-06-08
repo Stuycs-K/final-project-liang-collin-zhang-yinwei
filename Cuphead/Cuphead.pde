@@ -52,11 +52,11 @@ void draw() {
   }
   if (building1x <= -300) {
     building1y = (int)(random.nextFloat() * 80);
-    building1x = 2050;
+    building1x = 1750;
   }
   if (building2x <= -340) {
     building2y = (int)(random.nextFloat() * 100);
-    building2x = 2250;
+    building2x = 1650;
   }
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
@@ -102,9 +102,9 @@ void cloud2(int x, int y) {
 void building1 (int x, int yDep) {
   stroke(57, 39, 58);
   fill(82, 57, 85);
-  rect(x, (height - 200) + yDep, 70, height - 200, 7);
-  triangle(x + 32, (height - 200) + yDep, x + 38, (height - 200) + yDep, x + 35, (height - 270) + yDep);
-  rect(x + 60, (height - 120) + yDep, 80, height - 120, 7);
+  rect(x, (height - 200) + yDep, 110, height - 200, 7);
+  triangle(x + 52, (height - 200) + yDep, x + 58, (height - 200) + yDep, x + 55, (height - 270) + yDep);
+  rect(x + 60, (height - 120) + yDep, 120, height - 120, 7);
   stroke(0);
 }
 
@@ -113,6 +113,8 @@ void building2 (int x, int yDep) {
   fill(82, 57, 85);
   rect(x - 120, (height - 270), 170, height - 270, 7);
   rect(x + 10, (height - 240) + yDep, 85, height  - 240, 7);
+  rect(x + 100, (height - 400) + yDep, 55, height, 3);
+  quad(x - 220, height + 10, x - 140, height + 10, x - 160, height - 400, x - 200, height - 400);
   stroke(0);
 }
 
