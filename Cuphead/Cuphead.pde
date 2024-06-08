@@ -33,6 +33,7 @@ void setup() {
 
 void draw() {
   background(192, 212, 237);
+  background(182, 69, 28);
   cloud1x -= 6;
   cloud2x -= 6;
   if (cloud1x <= -400) {
