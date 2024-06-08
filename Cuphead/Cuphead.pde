@@ -32,7 +32,7 @@ void setup() {
 }
 
 void draw() {
-  background(186, 208, 219);
+  background(192, 212, 237);
   cloud1x -= 6;
   cloud2x -= 6;
   if (cloud1x <= -400) {
@@ -43,7 +43,6 @@ void draw() {
     cloud2x = 2000;
     cloud2y = (int)(random.nextFloat() * 170 + 70);
   }
-  background(152, 245, 249);
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
   boss.enact(allAttacks);
@@ -64,7 +63,7 @@ void keyReleased() {
 
 void cloud1(int x, int y) {
   stroke(190);
-  fill(190);
+  fill(200);
   circle(x, y, 50);
   circle(x + 30, y + 5, 50);
   circle(x - 40, y - 10, 50);
@@ -74,7 +73,7 @@ void cloud1(int x, int y) {
 
 void cloud2(int x, int y) {
   stroke(190);
-  fill(190);
+  fill(200);
   ellipse(x, y, 200, 60);
   circle(x - 30, y - 30, 70);
   circle(x - 55, y + 15, 100);
