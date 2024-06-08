@@ -82,3 +82,21 @@ void cloud2(int x, int y) {
   circle(x + 40, y - 20, 90);
   stroke(0);
 }
+
+void building1 (int xDist, int y) {
+  stroke(57, 39, 58);
+  fill(82, 57, 85);
+  stroke(0);
+}
+
+void building2 (int xDist, int y) {
+  stroke(57, 39, 58);
+  fill(82, 57, 85);
+  stroke(0);
+}
+
+void building3 (int xDist, int y) {
+  stroke(57, 39, 58);
+  fill(82, 57, 85);
+  stroke(0);
+}
