@@ -35,6 +35,9 @@ Changed main branch back to more workable linear plane motion and improved parry
 ### 06/05/24
 Balanced boss by changing speeds and trajectory of large red projectile attack
 
+### 06/07/24
+Changed background by removing preset stationary image and implementing general color background, moving clouds, and moving buildings"
+
 
 ## Yinwei Zhang
 
