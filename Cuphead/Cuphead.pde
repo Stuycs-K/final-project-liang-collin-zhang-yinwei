@@ -46,6 +46,7 @@ void draw() {
   }
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
+  building1(0, 0);
   boss.enact(allAttacks);
   p1.enact(allAttacks);
 
@@ -83,19 +84,20 @@ void cloud2(int x, int y) {
   stroke(0);
 }
 
-void building1 (int xDist, int y) {
+void building1 (int x, int yDep) {
+  stroke(57, 39, 58);
+  fill(82, 57, 85);
+  rect(x, (height - 200) + yDep, 70, height - 200, 7);
+  stroke(0);
+}
+
+void building2 (int x, int yDep) {
   stroke(57, 39, 58);
   fill(82, 57, 85);
   stroke(0);
 }
 
-void building2 (int xDist, int y) {
-  stroke(57, 39, 58);
-  fill(82, 57, 85);
-  stroke(0);
-}
-
-void building3 (int xDist, int y) {
+void building3 (int x, int yDep) {
   stroke(57, 39, 58);
   fill(82, 57, 85);
   stroke(0);
