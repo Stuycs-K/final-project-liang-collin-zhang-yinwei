@@ -14,6 +14,8 @@ int cloud1y = (int)(random.nextFloat() * 170 + 70);
 int cloud2y = (int)(random.nextFloat() * 170 + 70);
 int cloud1x = 1700;
 int cloud2x = 2000;
+int building1x = 2050;
+int building1y = (int)(random.nextFloat() * 80);
 
 void setup() {
   beamImg = loadImage("beam.png");
@@ -36,6 +38,7 @@ void draw() {
   background(182, 69, 28);
   cloud1x -= 6;
   cloud2x -= 6;
+  building1x -= 6;
   if (cloud1x <= -400) {
     cloud1x = 1700;
     cloud1y = (int)(random.nextFloat() * 170 + 70);
@@ -44,9 +47,13 @@ void draw() {
     cloud2x = 2000;
     cloud2y = (int)(random.nextFloat() * 170 + 70);
   }
+  if (building1x <= -300) {
+    building1y = (int)(random.nextFloat() * 80);
+    building1x = 2050;
+  }
   cloud1(cloud1x, cloud1y);
   cloud2(cloud2x, cloud2y);
-  building1(0, 80);
+  building1(building1x, building1y);
   boss.enact(allAttacks);
   p1.enact(allAttacks);
 

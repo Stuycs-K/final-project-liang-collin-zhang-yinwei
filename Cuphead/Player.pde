@@ -13,17 +13,17 @@ public class Player extends Sprite {
   }
   
   void enact(ArrayList<Attack> allAttacks) {
-    move(-3, 1);
+    move(-6, 1);
     if(keyboardInput.P_SPACE) {
       parrying = true;
       showAltPlayer();
     }
     else{
       if (keyboardInput.P_LEFT) {
-        move(-9,0);
+        move(-6,0);
       }
       if (keyboardInput.P_RIGHT) {
-         move(9,0);
+         move(10,0);
       }
       if(keyboardInput.P_UP) {
         move(0, -6);
