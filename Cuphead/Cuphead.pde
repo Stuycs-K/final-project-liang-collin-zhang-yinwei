@@ -66,6 +66,14 @@ void draw() {
   boss.enact(allAttacks);
   p1.enact(allAttacks);
   text(boss.health,50,50);
+  
+  for (int i = allAttacks.size() - 1; i >= 0; i--) {
+    Attack atk = allAttacks.get(i);
+    if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
+      atk.deactivate();
+      allAttacks.remove(i);
+    }
+  }
 }
 
 void keyPressed() {
