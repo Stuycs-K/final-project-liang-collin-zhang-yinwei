@@ -38,6 +38,8 @@ Balanced boss by changing speeds and trajectory of large red projectile attack
 ### 06/07/24
 Changed background by removing preset stationary image and implementing general color background, moving clouds, and moving buildings"
 
+### 06/09/24
+Adjusted and tuned parrying mechanics, completed final debugging, implemented gem attack, and created a title screen
 
 ## Yinwei Zhang
 
