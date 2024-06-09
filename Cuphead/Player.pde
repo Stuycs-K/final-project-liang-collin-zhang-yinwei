@@ -1,8 +1,6 @@
 public class Player extends Sprite {
   boolean parrying;
   int limit;
-  int pCooldown;
-  int pWindow;
   SuperCharge superCharge;
 
   public Player() {
@@ -13,27 +11,19 @@ public class Player extends Sprite {
     size = 15;
     limit = 40;
     parrying = false;
-    pCooldown = 0;
-    pWindow = 10;
     superCharge = new SuperCharge();
   }
 
   void enact(ArrayList<Attack> allAttacks) {
     move(-6, 1);
-    if (pCooldown > 0) {
-      pCooldown--;
-    }
-    if(keyboardInput.P_SPACE && pCooldown == 0 && superCharge.points >= 5) {
+    if(keyboardInput.P_SPACE && superCharge.points >= 5) {
       parrying = true;
-      pCooldown = 30;
-      superCharge.points -= 20;
     }
     if (parrying) {
       showParryPlayer();
-      pWindow--;
-      if (pWindow <= 0) {
+      superCharge.points -= 3;
+      if (superCharge.points <= 0 || (!keyboardInput.P_SPACE)) {
           parrying = false;
-          pWindow = 20;
       }
     } else {
       if (keyboardInput.P_LEFT) {
