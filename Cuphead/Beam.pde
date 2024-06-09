@@ -15,6 +15,7 @@ public class Beam extends Attack{
     this.r = r;
     beamImage = beamImg;
     parryable = false;
+    velocity = new PVector(-7, 0);
   }
 
   public Beam(int xCoor, int yCoor, int Size, int r, boolean parryable) {
@@ -22,24 +23,12 @@ public class Beam extends Attack{
     this.r = r;
     beamImage = beamPImg;
     this.parryable = parryable;
-  }
-
-  void rotate() {
-    r += 5;
-    if (r > 360) {
-      r = 0;
-    }
-  }
-
-  void rotate(int deltaR) {
-    r += deltaR;
-    if (r > 360) {
-      r = 0;
-    }
+    velocity = new PVector(-7, 0);
   }
 
   void enact() {
-    position.x -= 5;
+    position.x += velocity.x;
+    position.y += velocity.y;
     image(beamImage, position.x, position.y, size * 10, size * 3);
   }
 }

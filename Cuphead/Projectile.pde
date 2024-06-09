@@ -67,7 +67,7 @@ public class Projectile extends Attack {
       if(bounce) {
         this.bounce();
       }
-     fill(255, 0, 0, 127);
+     fill(216, 46, 212, 127);
      ellipse(position.x, position.y, size, size);
     }
   }

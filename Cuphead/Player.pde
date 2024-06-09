@@ -15,13 +15,13 @@ public class Player extends Sprite {
   }
 
   void enact(ArrayList<Attack> allAttacks) {
-    move(-6, 1);
+    move(-6, 0);
     if(keyboardInput.P_SPACE && superCharge.points >= 5) {
       parrying = true;
     }
     if (parrying) {
       showParryPlayer();
-      superCharge.points -= 3;
+      superCharge.points -= 2;
       if (superCharge.points <= 0 || (!keyboardInput.P_SPACE)) {
           parrying = false;
       }
