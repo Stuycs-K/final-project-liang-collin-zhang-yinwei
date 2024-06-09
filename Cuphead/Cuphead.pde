@@ -19,6 +19,7 @@ int building1x = 2050;
 int building1y = (int)(random.nextFloat() * 80);
 int building2x = 1050;
 int building2y = (int)(random.nextFloat() * 100);
+boolean titleScreen;
 
 void setup() {
   beamPImg = loadImage("beamP.png");
@@ -34,44 +35,57 @@ void setup() {
   size(1536, 700);
   allAttacks = new ArrayList<Attack>();
   boss = new Boss();
+  titleScreen = true;
 }
 
 void draw() {
-  background(192, 212, 237);
-  background(182, 69, 28);
-  cloud1x -= 6;
-  cloud2x -= 6;
-  building1x -= 6;
-  building2x -= 6;
-  if (cloud1x <= -400) {
-    cloud1x = 1700;
-    cloud1y = (int)(random.nextFloat() * 170 + 70);
+  if (titleScreen) {
+    background(252);
+    if (keyboardInput.P_SPACE) {
+      setup();
+      titleScreen = false;
+    }
+    else if(keyboardInput.P_DOWN) {
+      exit();
+    }
   }
-  if (cloud2x <= -500) {
-    cloud2x = 2000;
-    cloud2y = (int)(random.nextFloat() * 170 + 70);
-  }
-  if (building1x <= -300) {
-    building1y = (int)(random.nextFloat() * 80);
-    building1x = 1750;
-  }
-  if (building2x <= -340) {
-    building2y = (int)(random.nextFloat() * 100);
-    building2x = 1650;
-  }
-  cloud1(cloud1x, cloud1y);
-  cloud2(cloud2x, cloud2y);
-  building1(building1x, building1y);
-  building2(building2x, building2y);
-  boss.enact(allAttacks);
-  p1.enact(allAttacks);
-  text(boss.health,50,50);
-  
-  for (int i = allAttacks.size() - 1; i >= 0; i--) {
-    Attack atk = allAttacks.get(i);
-    if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
-      atk.deactivate();
-      allAttacks.remove(i);
+  else {
+    background(192, 212, 237);
+    background(182, 69, 28);
+    cloud1x -= 6;
+    cloud2x -= 6;
+    building1x -= 6;
+    building2x -= 6;
+    if (cloud1x <= -400) {
+      cloud1x = 1700;
+      cloud1y = (int)(random.nextFloat() * 170 + 70);
+    }
+    if (cloud2x <= -500) {
+      cloud2x = 2000;
+      cloud2y = (int)(random.nextFloat() * 170 + 70);
+    }
+    if (building1x <= -300) {
+      building1y = (int)(random.nextFloat() * 80);
+      building1x = 1750;
+    }
+    if (building2x <= -340) {
+      building2y = (int)(random.nextFloat() * 100);
+      building2x = 1650;
+    }
+    cloud1(cloud1x, cloud1y);
+    cloud2(cloud2x, cloud2y);
+    building1(building1x, building1y);
+    building2(building2x, building2y);
+    boss.enact(allAttacks);
+    p1.enact(allAttacks);
+    text(boss.health,50,50);
+    
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
+      if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
+        atk.deactivate();
+        allAttacks.remove(i);
+      }
     }
   }
 }
