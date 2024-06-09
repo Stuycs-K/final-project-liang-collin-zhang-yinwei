@@ -14,7 +14,7 @@ class SuperCharge {
     if (points >= 50) points = 50;
     if (points <= 0) points = 0;
   }
-
+ 
   void showBar() {
     for (int i = 0; i < 10; i++) {
       tint(255, 155);
