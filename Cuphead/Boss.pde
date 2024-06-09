@@ -11,7 +11,7 @@ public class Boss extends Sprite {
 
   public Boss () {
     position = new PVector(1300, 600);
-    health = 2;
+    health = 6;
     size = 0;
     active = true;
     loadBossSprite();

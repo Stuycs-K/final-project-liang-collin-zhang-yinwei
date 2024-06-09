@@ -3,7 +3,7 @@ public class Gem extends Sprite{
   int rot;
   public Gem () {
     position = new PVector (1400, 350);
-    health = 1;
+    health = 3;
     size = 15;
     attackList = new ArrayList<Attack>();
     time = millis();
@@ -23,7 +23,18 @@ public class Gem extends Sprite{
       for (Attack atk : attackList) {
         atk.enact();
       }
-      //enact attcks
+      
+      for (int i = allAttacks.size() - 1; i >= 0; i--) {
+        Attack atk = allAttacks.get(i);
+        if (atk.parent instanceof Player) {
+          if (PVector.dist(atk.position, position) < 30) {
+            health--;
+            atk.deactivate();
+            allAttacks.remove(i);
+            atk.parent.attackList.remove(atk);
+          }
+        }
+      }
       //check for hits
     }
     
