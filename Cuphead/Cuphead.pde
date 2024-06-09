@@ -43,7 +43,17 @@ void setup() {
 void draw() {
   if (titleScreen) {
     background(252);
-    
+    fill(0);
+    textSize(30);
+    text("WELCOME TO", width / 2 - 100, height / 2 - 170);
+    text(titleScreenText, width / 2 - 145, height / 2 - 240);
+    fill(252, 0, 0);
+    textSize(150);
+    text("CUPHEAD: APCS MANIA", width / 2 - 730, height / 2 - 11);
+    fill(0);
+    textSize(30);
+    text("Developed by Collin Liang and Yinwei Zhang", width / 2 - 270, height / 2 + 50);
+    text("Press SPACE to begin or S to quit", width / 2 - 210, height - 50);
     if (keyboardInput.P_SPACE) {
       setup();
       titleScreen = false;
@@ -81,7 +91,7 @@ void draw() {
     building2(building2x, building2y);
     boss.enact(allAttacks);
     p1.enact(allAttacks);
-    text(boss.health,50,50);
+    text("THE BOSS HAS " + boss.health + " HEALTH LEFT!",50,50);
     
     for (int i = allAttacks.size() - 1; i >= 0; i--) {
       Attack atk = allAttacks.get(i);
@@ -103,7 +113,7 @@ void draw() {
     
     if(p1.position.x < -500 || p1.position.y < -300 || p1.position.y > 1000 || p1.position.x > 1300) {
       titleScreen = true;
-      titleScreenText = "YOU WANDERED INTO A PRECARIOUS POSITION";
+      titleScreenText = "YOU WERE BLOWN AWAY";
     }
   }
 }
