@@ -6,6 +6,7 @@ public class Boss extends Sprite {
   int time;
   Random rng;
   int hitsTaken;
+  int beamCounter;
 
   public Boss () {
     position = new PVector(1300, 600);
@@ -17,6 +18,7 @@ public class Boss extends Sprite {
     rng = new Random();
     hitsTaken = 0;
     attackList = new ArrayList<Attack>();
+    beamCounter = 0;
   }
   
   void attack() {
@@ -27,7 +29,13 @@ public class Boss extends Sprite {
       ball.parent = this;
       allAttacks.add(ball);
     } else {
-      Beam beam = new Beam((int)position.x + 50, (int)position.y - 150, 10, 0);
+      beamCounter++;
+      Beam beam;
+      if (beamCounter % 5 == 0) {
+        beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0, true);
+      } else {
+        beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0);
+      }
       beam.parent = this;
       allAttacks.add(beam);
     }
@@ -59,7 +67,7 @@ public class Boss extends Sprite {
 
     showBoss();
   }
-  
+
   void showBoss() {
     image(body, position.x + 25, position.y - 155, body.width / 3.5, body.height / 3.5);
     image(head, position.x, position.y - 375, head.width / 5, head.height / 5);

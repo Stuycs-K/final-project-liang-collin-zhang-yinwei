@@ -1,6 +1,8 @@
 public class Player extends Sprite {
   boolean parrying;
   int limit;
+  int pCooldown;
+  int pWindow;
   
   public Player() {
     position = new PVector(width/2,height/2);
@@ -10,15 +12,27 @@ public class Player extends Sprite {
     size = 15;
     limit = 40;
     parrying = false;
+    pCooldown = 0;
+    pWindow = 10;
   }
   
   void enact(ArrayList<Attack> allAttacks) {
     move(-6, 1);
-    if(keyboardInput.P_SPACE) {
-      parrying = true;
-      showAltPlayer();
+    if (pCooldown > 0) {
+      pCooldown--;
     }
-    else{
+    if(keyboardInput.P_SPACE && pCooldown == 0) {
+      parrying = true;
+      pCooldown = 60;
+    }
+    if (parrying) {
+      showParryPlayer();
+      pWindow--;
+      if (pWindow <= 0) {
+          parrying = false;
+          pWindow = 10;
+      }
+    } else {
       if (keyboardInput.P_LEFT) {
         move(-6,0);
       }
@@ -43,6 +57,7 @@ public class Player extends Sprite {
             atk.parent.attackList.remove(atk);
             atk.parent = this;
             atk.velocity.x *= -1;
+            atk.velocity.y *= -1;
             this.attackList.add(atk);
           }
           else{
@@ -53,7 +68,6 @@ public class Player extends Sprite {
         }
       }
     }
-    parrying = false;
   }
 
 
@@ -63,6 +77,19 @@ public class Player extends Sprite {
     position.y += yCoor;
   }
   
+
+  void showParryPlayer() {
+    stroke(0, 255, 0);
+    fill(0, 255, 0);
+    ellipse(position.x, position.y, 120, 60);
+    ellipse(position.x - 60, position.y, 30, 60);
+    stroke(0);
+    fill(33, 244, 85);
+    circle(position.x + 30, position.y + 15, 10);
+    stroke(0, 255, 0);
+    fill(0, 255, 0);
+    ellipse(position.x, position.y, 130, 70);
+  }
 
   void showPlayer() {
     stroke(255, 0, 0);
