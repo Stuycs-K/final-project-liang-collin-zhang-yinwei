@@ -16,7 +16,6 @@ class SuperCharge {
   }
 
   void showBar() {
-    println(points);
     for (int i = 0; i < 10; i++) {
       tint(255, 155);
       image(card, i * ((width - 1350) / 5) + 30, height - 50, ((width - 1350) / 5) + 5, 50);
