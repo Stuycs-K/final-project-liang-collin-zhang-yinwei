@@ -29,7 +29,6 @@ void setup() {
   planeNormalImg = loadImage("plane.png");
   cardImg = loadImage("card.png");
   hpImg = loadImage("hp.png");
-  
   p1 = new Player();
   keyboardInput = new KeyboardBuffer();
   size(1536, 700);
@@ -66,7 +65,7 @@ void draw() {
   building2(building2x, building2y);
   boss.enact(allAttacks);
   p1.enact(allAttacks);
-
+  text(boss.health,50,50);
 }
 
 void keyPressed() {

@@ -24,7 +24,6 @@ public class Boss extends Sprite {
   void attack() {
     if (rng.nextBoolean()) {
       float vx = rng.nextFloat() * 10 + 10;
-      float vy = rng.nextFloat() * 2;
       Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 400, -(int)vx, 0);
       ball.parent = this;
       allAttacks.add(ball);
@@ -73,20 +72,12 @@ public class Boss extends Sprite {
     image(head, position.x, position.y - 375, head.width / 5, head.height / 5);
   }
 
-  void takeHit() {
-    hitsTaken++;
-    if (hitsTaken >= 3) {
-      println("Boss is done for");
-      exit();
-    }
-  }
-
   void checkForHits(ArrayList<Attack> allAttacks) {
     for (int i = allAttacks.size() - 1; i >= 0; i--) {
       Attack atk = allAttacks.get(i);
       if (atk instanceof Projectile && atk.parent instanceof Player) {
         if (dist(position.x, position.y - 375, atk.position.x, atk.position.y) < size + atk.size / 2 + 100) {
-          takeHit();
+          health--;
           atk.deactivate();
           allAttacks.remove(i);
         }
