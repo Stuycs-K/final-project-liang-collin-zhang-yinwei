@@ -3,7 +3,7 @@ public class Player extends Sprite {
   int limit;
   int pCooldown;
   int pWindow;
-  
+
   public Player() {
     position = new PVector(width/2,height/2);
     health = 3;
@@ -15,7 +15,7 @@ public class Player extends Sprite {
     pCooldown = 0;
     pWindow = 10;
   }
-  
+
   void enact(ArrayList<Attack> allAttacks) {
     move(-6, 1);
     if (pCooldown > 0) {
@@ -53,14 +53,13 @@ public class Player extends Sprite {
     for (Attack atk : allAttacks) {
       if (atk.position.dist(this.position) < this.limit + atk.size) {
         if ((!attackList.contains(atk)) && atk.active) {
-          if(parrying) {
+          if (parrying && atk instanceof Beam && ((Beam) atk).parryable) {
             atk.parent.attackList.remove(atk);
             atk.parent = this;
             atk.velocity.x *= -1;
             atk.velocity.y *= -1;
             this.attackList.add(atk);
-          }
-          else{
+          } else {
             health--;
             atk.deactivate();
             atk.parent.attackList.remove(atk);
