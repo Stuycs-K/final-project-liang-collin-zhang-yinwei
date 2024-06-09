@@ -20,7 +20,7 @@ public class Beam extends Attack{
   public Beam(int xCoor, int yCoor, int Size, int r, boolean parryable) {
     super(xCoor, yCoor, Size);
     this.r = r;
-    beamImage = beamImg;
+    beamImage = beamPImg;
     this.parryable = parryable;
   }
 
@@ -40,11 +40,6 @@ public class Beam extends Attack{
 
   void enact() {
     position.x -= 5;
-    if (parryable) {
-      fill(100, 100, 100);
-    } else {
-      fill(255, 0, 0);
-    }
     image(beamImage, position.x, position.y, size * 10, size * 3);
   }
 }

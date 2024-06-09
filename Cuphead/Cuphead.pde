@@ -2,6 +2,7 @@ Boss boss;
 ArrayList<Attack> allAttacks;
 KeyboardBuffer keyboardInput;
 PImage beamImg;
+PImage beamPImg;
 PImage fireballImg;
 PImage bodyImg;
 PImage headImg;
@@ -20,6 +21,7 @@ int building2x = 1050;
 int building2y = (int)(random.nextFloat() * 100);
 
 void setup() {
+  beamPImg = loadImage("beamP.png");
   beamImg = loadImage("beam.png");
   fireballImg = loadImage("fireball.png");
   bodyImg = loadImage("body.png");
