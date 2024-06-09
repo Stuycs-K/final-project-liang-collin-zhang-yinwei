@@ -6,6 +6,7 @@ public class Boss extends Sprite {
   int time;
   Random rng;
   int beamCounter;
+  int atkCD;
 
   public Boss () {
     position = new PVector(1300, 600);
@@ -17,15 +18,18 @@ public class Boss extends Sprite {
     rng = new Random();
     attackList = new ArrayList<Attack>();
     beamCounter = 0;
+    atkCD = 0;
   }
   
   void attack() {
-    if (rng.nextBoolean()) {
+    if ((int)(rng.nextFloat() * 10) < 3) {
       float vx = rng.nextFloat() * 10 + 10;
       Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 70, 400, -(int)vx, 0, true);
       ball.parent = this;
       allAttacks.add(ball);
+      attackList.add(ball);
     } else {
+      atkCD++;
       beamCounter++;
       Beam beam;
       if (beamCounter % 5 == 0) {
@@ -35,6 +39,7 @@ public class Boss extends Sprite {
       }
       beam.parent = this;
       allAttacks.add(beam);
+      attackList.add(beam);
     }
   }
 
@@ -48,17 +53,23 @@ public class Boss extends Sprite {
       Attack atk = allAttacks.get(i);
       if (atk.position.x > width || atk.position.x < 0 || atk.position.y > height || atk.position.y < 0) {
         atk.deactivate();
-        atk.deactivate();
         allAttacks.remove(i);
-      } else {
-        atk.enact();
       }
+    }
+    
+    for(Attack atk : attackList) {
+      atk.enact();
     }
 
     checkForHits(allAttacks);
 
     if (millis() - time > 1000) {
-      attack();
+      if(atkCD == 0) {
+        attack();
+      }
+      else{
+        atkCD--;
+      }
       time = millis();
     }
 
