@@ -7,10 +7,11 @@ public class Boss extends Sprite {
   Random rng;
   int beamCounter;
   int atkCD;
+  Gem gem;
 
   public Boss () {
     position = new PVector(1300, 600);
-    health = 10;
+    health = 2;
     size = 0;
     active = true;
     loadBossSprite();
@@ -19,28 +20,28 @@ public class Boss extends Sprite {
     attackList = new ArrayList<Attack>();
     beamCounter = 0;
     atkCD = 0;
+    gem = new Gem();
   }
   
   void attack() {
-    if ((int)(rng.nextFloat() * 10) < 3) {
+    if ((int)(rng.nextFloat() * 10) < 2) {
       float vx = rng.nextFloat() * 10 + 10;
       Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 70, 400, -(int)vx, 0, true);
       ball.parent = this;
       allAttacks.add(ball);
       attackList.add(ball);
-    } else {
-      atkCD++;
-      beamCounter++;
-      Beam beam;
-      if (beamCounter % 5 == 0) {
-        beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0, true);
-      } else {
-        beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0);
-      }
-      beam.parent = this;
-      allAttacks.add(beam);
-      attackList.add(beam);
     }
+    atkCD++;
+    beamCounter++;
+    Beam beam;
+    if (beamCounter % 5 == 0) {
+      beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0, true);
+    } else {
+      beam = new Beam((int) position.x + 50, (int) position.y - 150, 10, 0);
+    }
+    beam.parent = this;
+    allAttacks.add(beam);
+    attackList.add(beam);
   }
 
   void loadBossSprite() {
@@ -74,6 +75,10 @@ public class Boss extends Sprite {
     }
 
     showBoss();
+    
+    if(health < 3 && gem.health > 0) {
+      gem.enact(allAttacks);
+    }
   }
 
   void showBoss() {

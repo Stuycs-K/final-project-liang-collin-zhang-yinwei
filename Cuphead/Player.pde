@@ -66,12 +66,6 @@ public class Player extends Sprite {
     superCharge.showBar();
   }
 
-  @Override
-  void move(int xCoor, int yCoor) {
-    position.x += xCoor;
-    position.y += yCoor;
-  }
-
   void showParryPlayer() {
     stroke(0, 255, 0);
     fill(0, 255, 0);
