@@ -25,7 +25,7 @@ public class Player extends Sprite {
     }
     if(keyboardInput.P_SPACE && pCooldown == 0 && superCharge.points >= 5) {
       parrying = true;
-      pCooldown = 60;
+      pCooldown = 30;
       superCharge.points -= 20;
     }
     if (parrying) {
@@ -33,7 +33,7 @@ public class Player extends Sprite {
       pWindow--;
       if (pWindow <= 0) {
           parrying = false;
-          pWindow = 10;
+          pWindow = 20;
       }
     } else {
       if (keyboardInput.P_LEFT) {
@@ -56,11 +56,11 @@ public class Player extends Sprite {
     for (Attack atk : allAttacks) {
       if (atk.position.dist(this.position) < this.limit + atk.size) {
         if ((!attackList.contains(atk)) && atk.active) {
-          if (parrying && atk instanceof Beam && ((Beam) atk).parryable) {
+          if (parrying && ((atk instanceof Beam && ((Beam) atk).parryable) || atk instanceof Projectile)) {
             atk.parent.attackList.remove(atk);
             atk.parent = this;
             atk.velocity.x *= -1;
-            atk.velocity.y *= -1;
+            atk.velocity.y *=  -1;
             this.attackList.add(atk);
           } else {
             health--;
@@ -124,6 +124,10 @@ public class Player extends Sprite {
     ellipse(position.x - 60, position.y, 30, 60);
     stroke(0);
     circle(position.x + 30, position.y + 15, 10);
+  }
+  
+  void parry() {
+    
   }
 }
 
