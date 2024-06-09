@@ -20,6 +20,7 @@ int building1y = (int)(random.nextFloat() * 80);
 int building2x = 1050;
 int building2y = (int)(random.nextFloat() * 100);
 boolean titleScreen;
+String titleScreenText;
 
 void setup() {
   beamPImg = loadImage("beamP.png");
@@ -36,11 +37,13 @@ void setup() {
   allAttacks = new ArrayList<Attack>();
   boss = new Boss();
   titleScreen = true;
+  titleScreenText = "";
 }
 
 void draw() {
   if (titleScreen) {
     background(252);
+    
     if (keyboardInput.P_SPACE) {
       setup();
       titleScreen = false;
@@ -86,6 +89,21 @@ void draw() {
         atk.deactivate();
         allAttacks.remove(i);
       }
+    }
+    
+    if(boss.health <= 0) {
+      titleScreen = true;
+      titleScreenText = "YOU BEAT THE BOSS";
+    }
+    
+    if(p1.health <= 0) {
+      titleScreen = true;
+      titleScreenText = "THE BOSS BEAT YOU";
+    }
+    
+    if(p1.position.x < -500 || p1.position.y < -300 || p1.position.y > 1000 || p1.position.x > 1300) {
+      titleScreen = true;
+      titleScreenText = "YOU WANDERED INTO A PRECARIOUS POSITION";
     }
   }
 }
