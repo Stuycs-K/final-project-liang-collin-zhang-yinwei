@@ -43,7 +43,8 @@ public class Player extends Sprite {
     for (Attack atk : attackList) {
       atk.enact();
     }
-    for (Attack atk : allAttacks) {
+    for (int i = allAttacks.size() - 1; i >= 0; i--) {
+      Attack atk = allAttacks.get(i);
       if (atk.position.dist(this.position) < this.limit + atk.size) {
         if ((!attackList.contains(atk)) && atk.active) {
           if (parrying && ((atk instanceof Beam && ((Beam) atk).parryable) || atk instanceof Projectile)) {
@@ -56,6 +57,7 @@ public class Player extends Sprite {
             health--;
             atk.deactivate();
             atk.parent.attackList.remove(atk);
+            allAttacks.remove(atk);
           }
         }
       }

@@ -5,7 +5,6 @@ public class Boss extends Sprite {
   PImage head;
   int time;
   Random rng;
-  int hitsTaken;
   int beamCounter;
 
   public Boss () {
@@ -16,7 +15,6 @@ public class Boss extends Sprite {
     loadBossSprite();
     time = millis();
     rng = new Random();
-    hitsTaken = 0;
     attackList = new ArrayList<Attack>();
     beamCounter = 0;
   }
@@ -24,7 +22,7 @@ public class Boss extends Sprite {
   void attack() {
     if (rng.nextBoolean()) {
       float vx = rng.nextFloat() * 10 + 10;
-      Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 200, 400, -(int)vx, 0);
+      Projectile ball = new Projectile((int)position.x + 100, (int)position.y - 450, 70, 400, -(int)vx, 0, true);
       ball.parent = this;
       allAttacks.add(ball);
     } else {
