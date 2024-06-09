@@ -3,6 +3,7 @@ public class Player extends Sprite {
   int limit;
   int pCooldown;
   int pWindow;
+  SuperCharge superCharge;
 
   public Player() {
     position = new PVector(width/2,height/2);
@@ -14,6 +15,7 @@ public class Player extends Sprite {
     parrying = false;
     pCooldown = 0;
     pWindow = 10;
+    superCharge = new SuperCharge();
   }
 
   void enact(ArrayList<Attack> allAttacks) {
@@ -21,9 +23,10 @@ public class Player extends Sprite {
     if (pCooldown > 0) {
       pCooldown--;
     }
-    if(keyboardInput.P_SPACE && pCooldown == 0) {
+    if(keyboardInput.P_SPACE && pCooldown == 0 && superCharge.points >= 5) {
       parrying = true;
       pCooldown = 60;
+      superCharge.points -= 20;
     }
     if (parrying) {
       showParryPlayer();
@@ -67,15 +70,15 @@ public class Player extends Sprite {
         }
       }
     }
+    superCharge.update();
+    superCharge.showBar();
   }
-
 
   @Override
   void move(int xCoor, int yCoor) {
     position.x += xCoor;
     position.y += yCoor;
   }
-  
 
   void showParryPlayer() {
     stroke(0, 255, 0);
@@ -113,7 +116,7 @@ public class Player extends Sprite {
     fill(33, 244, 85);
     circle(position.x + 30, position.y + 15, 10);
   }
-  
+
   void showAltPlayer() {
     stroke(255, 0, 0);
     fill(255, 0, 0);
@@ -123,6 +126,11 @@ public class Player extends Sprite {
     circle(position.x + 30, position.y + 15, 10);
   }
 }
+
+
+
+
+
 
 /*public class Player extends Sprite {
   PImage planeNormal;
