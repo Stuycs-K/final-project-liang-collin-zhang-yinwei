@@ -118,9 +118,6 @@ public class Player extends Sprite {
     circle(position.x + 30, position.y + 15, 10);
   }
   
-  void parry() {
-    
-  }
 }
 
 

@@ -84,11 +84,20 @@ public class Boss extends Sprite {
   void checkForHits(ArrayList<Attack> allAttacks) {
     for (int i = allAttacks.size() - 1; i >= 0; i--) {
       Attack atk = allAttacks.get(i);
-      if (atk instanceof Projectile && atk.parent instanceof Player) {
+      if ((atk.parent instanceof Player) && (atk instanceof Projectile)) {
         if (dist(position.x, position.y - 375, atk.position.x, atk.position.y) < size + atk.size / 2 + 100) {
           health--;
           atk.deactivate();
           allAttacks.remove(i);
+          atk.parent.attackList.remove(atk);
+        }
+      }
+      else if (atk.parent instanceof Player && atk instanceof Beam) {
+        if (atk.position.x >= 1300) {
+          health--;
+          atk.deactivate();
+          allAttacks.remove(i);
+          atk.parent.attackList.remove(atk);
         }
       }
     }
