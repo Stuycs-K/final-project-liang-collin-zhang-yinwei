@@ -7,6 +7,7 @@ class KeyboardBuffer {
   boolean P_SPACE;
   boolean P_UP;
   boolean P_DOWN;
+  boolean P_H;
 
   public KeyboardBuffer() {
     P_LEFT = false;
@@ -14,13 +15,16 @@ class KeyboardBuffer {
     P_SPACE = false;
     P_DOWN = false;
     P_UP = false;
+    P_H = false;
   }
 
   //Map your keys here. You can bind any key presses to
   //different "actions" e.g. P1_LEFT suggests player1 goes left when this is held down.
   void press(int code, boolean pressed) {
     //println("Pressed: "+code);//Help you figure out codes that aren't working the way you want.
-
+    if(code == 'H') {
+      P_H = pressed;
+    }
     if(code == 'A'){
       P_LEFT = pressed;
     }

@@ -41,6 +41,9 @@ void setup() {
 }
 
 void draw() {
+  if (keyboardInput.P_H) {
+    boss.health--;
+  }
   if (titleScreen) {
     background(252);
     fill(0);

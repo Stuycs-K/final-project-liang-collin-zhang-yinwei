@@ -3,7 +3,7 @@ public class Gem extends Sprite{
   int rot;
   public Gem () {
     position = new PVector (1400, 350);
-    health = 3;
+    health = 1;
     size = 15;
     attackList = new ArrayList<Attack>();
     time = millis();
