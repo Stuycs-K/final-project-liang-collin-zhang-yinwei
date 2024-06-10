@@ -68,7 +68,7 @@ public class Projectile extends Attack {
         this.bounce();
       }
      fill(216, 46, 212, 127);
-     ellipse(position.x, position.y, size, size);
+     image(fireballImg, position.x, position.y, size, size);
     }
   }
 }
