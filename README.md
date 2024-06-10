@@ -31,3 +31,7 @@ Hold **H** to quickly lower the boss's health!
 None. Parrying is difficult, but this is intended. Position yourself in front of the projectile, then await its arrival.
 
 ## Presentation
+[Linked Here](https://drive.google.com/file/d/1Y3DLMqFRh56agFXKrcKFQu4_N6H3ru0m/view?usp=sharing)
+
+## Prototype & UML Diagram
+[Linked Here](https://docs.google.com/document/d/e/2PACX-1vTKl1ovOCGgPMiQ_kRcPY3mcPBQv4ooTRzIG5_vwaQqlmyHsfjcN0YuuRDayuo7Jz6iEDs6xJVEhvi-/pub)
