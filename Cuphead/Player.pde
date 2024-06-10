@@ -23,7 +23,7 @@ public class Player extends Sprite {
       parrying = true;
     }
     if (parrying) {
-            image(aimImg, 20, 20, 50, 50);
+      image(aimImg, 20, 20, 50, 50);
       showParryPlayer();
       superCharge.points -= 2;
       if (superCharge.points <= 0 || (!keyboardInput.P_SPACE)) {
@@ -32,15 +32,19 @@ public class Player extends Sprite {
     } else {
       if (keyboardInput.P_LEFT) {
         move(-6,0);
+        image(moveImg, 20, 120, 50, 50);
       }
       if (keyboardInput.P_RIGHT) {
          move(10,0);
+         image(moveImg, 20, 120, 50, 50);
       }
       if(keyboardInput.P_UP) {
         move(0, -6);
+        image(turnImg, 20, 60, 50, 50);
       }
       if(keyboardInput.P_DOWN) {
         move(0, 6);
+        image(turnImg, 20, 60, 50, 50);
       }
       showPlayer();
     }

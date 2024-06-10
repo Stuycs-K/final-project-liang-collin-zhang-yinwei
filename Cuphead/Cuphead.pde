@@ -6,6 +6,9 @@ PImage beamPImg;
 PImage fireballImg;
 PImage bodyImg;
 PImage headImg;
+PImage turnImg;
+PImage moveImg;
+PImage bg;
 PImage planeNormalImg;
 PImage cardImg;
 PImage aimImg;
@@ -24,6 +27,9 @@ boolean titleScreen;
 String titleScreenText;
 
 void setup() {
+  bg = loadImage("bg.png");
+  moveImg = loadImage("go.png");
+  turnImg = loadImage("turn.png");
   aimImg = loadImage("aim.png");
   beamPImg = loadImage("beamP.png");
   beamImg = loadImage("beam.png");
@@ -68,8 +74,7 @@ void draw() {
     }
   }
   else {
-    background(192, 212, 237);
-    background(182, 69, 28);
+    background(bg);
     cloud1x -= 6;
     cloud2x -= 6;
     building1x -= 6;
