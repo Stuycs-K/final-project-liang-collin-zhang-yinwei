@@ -8,6 +8,7 @@ PImage bodyImg;
 PImage headImg;
 PImage planeNormalImg;
 PImage cardImg;
+PImage aimImg;
 PImage hpImg;
 Player p1;
 Random random = new Random();
@@ -23,6 +24,7 @@ boolean titleScreen;
 String titleScreenText;
 
 void setup() {
+  aimImg = loadImage("aim.png");
   beamPImg = loadImage("beamP.png");
   beamImg = loadImage("beam.png");
   fireballImg = loadImage("fireball.png");
@@ -94,7 +96,7 @@ void draw() {
     building2(building2x, building2y);
     boss.enact(allAttacks);
     p1.enact(allAttacks);
-    text("THE BOSS HAS " + boss.health + " HEALTH LEFT!",50,50);
+    text("THE BOSS HAS " + boss.health + " HEALTH LEFT!",75,50);
     
     for (int i = allAttacks.size() - 1; i >= 0; i--) {
       Attack atk = allAttacks.get(i);

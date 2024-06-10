@@ -23,6 +23,7 @@ public class Player extends Sprite {
       parrying = true;
     }
     if (parrying) {
+            image(aimImg, 20, 20, 50, 50);
       showParryPlayer();
       superCharge.points -= 2;
       if (superCharge.points <= 0 || (!keyboardInput.P_SPACE)) {
